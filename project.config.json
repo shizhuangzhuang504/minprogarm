@@ -1,0 +1,112 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"uglifyFileName": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.1",
+	"appid": "wx88ccabac8ee96759",
+	"projectname": "%E5%8C%A0%E4%B8%B01",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 7,
+			"list": [
+				{
+					"id": -1,
+					"name": "账户会员信息",
+					"pathName": "pages/accountVip/accountVip",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "账户收货地址",
+					"pathName": "pages/accountAddress/accountAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "门店查询",
+					"pathName": "pages/shopSearch/shopSearch",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的外卖订单",
+					"pathName": "pages/accountOrder/accountOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券",
+					"pathName": "pages/coupon/coupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "外卖",
+					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加收货地址",
+					"pathName": "pages/accountAddAddress/accountAddAddress",
+					"scene": null
+				}
+			]
+		}
+	}
+}

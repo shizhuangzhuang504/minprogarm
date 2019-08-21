@@ -1,0 +1,14 @@
+<view class="nav">
+  <navigator class="link" url="">
+    <text>关于我们</text>
+    <image class="icon-right-1" src="./../../assets/image/icon-right-1.png" mode="aspectFill" ></image>
+  </navigator>
+  <navigator class="link" url="">
+    <text>匠丰隐私政策</text>
+    <image class="icon-right-1" src="./../../assets/image/icon-right-1.png" mode="aspectFill" ></image>
+  </navigator>
+  <navigator class="link" url="">
+    <text>意见反馈</text>
+    <image class="icon-right-1" src="./../../assets/image/icon-right-1.png" mode="aspectFill" ></image>
+  </navigator>
+</view>

@@ -1,0 +1,72 @@
+/* 左边菜单 */
+.foodmenu{
+	width:200rpx; height: 100vh; background-color: #f0f0f0; position: absolute; left:0px;top: 0px; z-index: 1;
+	border-top:1px solid  #f0f0f0;
+}
+.foodmenu .item{
+	font-size: 28rpx; border-bottom: 1px solid #ddd; line-height: 160rpx; text-align: center;
+}
+.foodmenu .active{color:#296 !important;background-color: #fff !important;}
+
+/* 右边菜列表 */
+.goods_wrap{
+	height: 100vh; padding-left:200rpx; box-sizing: border-box;
+}
+.goods_wrap .empty{ height:180rpx; text-align: center;}
+.goods_wrap .category_title{
+	font-size: 30rpx;line-height: 2em;background-color: #f9f9f9;padding: 0rpx 10rpx;
+}
+.goods_wrap .food{
+	background-color: #fff; display: flex;align-items: flex-start;
+	padding:30rpx 12rpx;border-bottom: 1px solid #eee;
+}
+.goods_wrap .food image{width:150rpx;height:150rpx;}
+.goods_wrap .food .info{flex:1;margin-left: 20rpx;position: relative;}
+.goods_wrap .food .info .title{color:#333;font-size: 32rpx;}
+.goods_wrap .food .info .label{color:#999;font-size: 24rpx;}
+.goods_wrap .food .info .price{color:#e00;font-size: 30rpx;font-weight: bold;}
+.goods_wrap .food .info .control{position: absolute;right:0px;bottom: 0px;}
+
+
+
+
+/*预览大图*/
+.preview_image{
+	position: absolute;left:0px;top:0px;z-index:9999999;
+	width:100%;height:100vh;background-color: rgba(0,0,0,0.8);
+}
+.preview_image image{transform: translateY(50%)}
+
+.control{width:100%;display: flex;align-items: center;justify-content: flex-end;}
+.control input{width:60rpx;border:none;text-align: center;}
+
+
+
+/* 购物车列表 */
+.cart_wrap{ width:100%;position: absolute;left:0px;bottom:100rpx;background-color: #fff; z-index: 4; }
+.cart_list{ width:100%;height:50vh;}
+.cart_list .row{display: flex;height:50px;padding:0px 20rpx;border-bottom: 1px solid #eee;align-items: center;}
+.cart_list .row view{flex:1;}
+
+.cart_control{display: flex;align-items:center;justify-content: space-between;padding:20rpx 20rpx;border-bottom: 1px solid #ddd;}
+.cart_control .title{font-size:30rpx;color:#666;}
+.cart_control view{}
+
+.mask{width:100%;height:100vh;position: absolute;left:0px;top:0px;background-color: rgba(0,0,0,0.8); z-index: 3}
+
+/* 小车 */
+.cart{
+	color:#fff;width: 100%;min-height:100rpx;background-color: #333;display: flex;align-items:center;justify-content: space-between;
+	position: absolute;left:0px;bottom:0px;z-index: 5;
+}
+.cart view{}
+.cart view.icon{width:80rpx;padding:0px 20rpx;position: relative;}
+.cart view.icon .badge{
+	color:#fff;font-size:10px;background-color: #f20;line-height:16px;width:16px;border-radius: 100%;
+	text-align: center;position: absolute;top:0px;right: 0px;
+}
+.cart view.totalprice{color:#fff;padding:0px 10rpx;flex:1}
+.cart view.totalprice .number{font-size:48rpx;font-weight:700}
+.cart view.totalprice .tip{color:#999;font-size:24rpx;padding:0px 10rpx;}
+.cart view.next{height:100rpx;line-height:100rpx;width:200rpx;color: #999;background-color: #333;text-align: center;}
+.cart view.active{color:#fff;background-color: #395 !important;}

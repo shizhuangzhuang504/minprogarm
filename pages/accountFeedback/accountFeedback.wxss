@@ -1,0 +1,16 @@
+page {
+  border-top: 1rpx solid #a0a0a0;
+}
+.nav {
+  border-top: 10rpx solid #eee;
+}
+.nav .link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  margin: 0 45rpx;
+  height: 89rpx;
+  color: #333;
+  font-size: 30rpx;
+}

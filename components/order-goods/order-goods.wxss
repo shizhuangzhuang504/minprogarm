@@ -1,0 +1,54 @@
+.order-goods {
+  margin-bottom: 30rpx;
+  height: 150rpx;
+}
+.order-goods .goods-image {
+  float: left;
+  margin-right: 30rpx;
+  border-radius: 5rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+.order-goods .name {
+  padding-top: 4rpx;
+  padding-bottom: 10rpx;
+  height: 96rpx;
+  color: #333;
+  font-size: 36rpx;
+  line-height: 48rpx;
+}
+.order-goods .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 326rpx;
+}
+.order-goods .price {
+  color: #e94215;
+  font-size: 36rpx;
+}
+.order-goods .icon-number-reduce,
+.order-goods .icon-number-add,
+.order-goods .number text {
+  vertical-align: top;
+}
+.order-goods .number text {
+  display: inline-block;
+  width: 58rpx;
+  height: 40rpx;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+ .list .head {
+  height: 76rpx;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 76rpx;
+}
+ .list .head .logo-red {
+  vertical-align: middle;
+  margin-left: 10rpx;
+  margin-right: 15rpx;
+}

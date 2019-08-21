@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "index-goods": "/components/index-goods/index-goods",
+    "calc-car": "/components/calc-car/calc-car"
+  }
+}

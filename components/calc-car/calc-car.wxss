@@ -1,0 +1,229 @@
+.calc-bar .icon {
+  float: left;
+  position: relative;
+  border-radius: 45rpx 5rpx 5rpx 45rpx;
+  width: 159rpx;
+  height: 90rpx;
+  background: #e94215;
+}
+.calc-bar .icon .icon-man {
+  position: absolute;
+  left: 35rpx;
+  bottom: 5rpx;
+}
+.calc-bar .number {
+  margin-left: 164rpx;
+  border-radius: 5rpx 45rpx 45rpx 5rpx;
+  padding-left: 22rpx;
+  height: 90rpx;
+  background: #e94215;
+}
+.calc-bar .number .price {
+  padding-top: 12rpx;
+  color: #fff;
+  font-size: 30rpx;
+}
+.calc-bar .number .remark {
+  margin-top: 10rpx;
+  color: #ffa086;
+  font-size: 24rpx;
+}
+.calc-bar .number .tips {
+  position: absolute;
+  top: 33rpx;
+  right: 32rpx;
+  color: #ffa086;
+  font-size: 24rpx;
+  text-align: right;
+}
+.calc-bar .number .btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 170rpx;
+  height: 90rpx;
+  border-left: 1rpx solid #fff;
+  border-radius: 0 45rpx 45rpx 0;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 90rpx;
+  text-indent: 50rpx;
+  background: #eb552d;
+}
+.confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, .25);
+}
+.confirm .wrap {
+  position: absolute;
+  top: 136rpx;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-radius: 15rpx;
+  background: #fff;
+  overflow: auto;
+}
+.confirm .wrap .head {
+  color: #000;
+  font-size: 30rpx;
+  line-height: 78rpx;
+  text-align: center;
+}
+.confirm .wrap .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  font-size: 30rpx;
+}
+.confirm .wrap .row .goods-item {
+  margin-top: 20rpx;
+}
+.confirm .wrap .row:nth-child(2) .goods-item {
+  margin-top: 0;
+}
+.confirm .userinfo {
+  margin: 4rpx 35rpx 0;
+  border-top: 1rpx solid #eee;
+  padding-top: 17rpx;
+  padding-bottom: 29rpx;
+  color: #000;
+}
+.confirm .userinfo .icon-right-2 {
+  float: right;
+  margin-top: 18rpx;
+}
+.confirm .userinfo .address {
+  height: 34rpx;
+  font-size: 30rpx;
+  line-height: 34rpx;
+}
+.confirm .userinfo .tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8rpx;
+  border: 2rpx solid #e94215;
+  width: 50rpx;
+  height: 30rpx;
+  color: #e94215;
+  font-size: 20rpx;
+  line-height: 30rpx;
+  text-align: center;
+}
+.confirm .userinfo .user {
+  padding-top: 17rpx;
+  height: 24rpx;
+  font-size: 24rpx;
+}
+.confirm .userinfo .mobile {
+  margin-left: 24rpx;
+}
+.confirm .order,
+.confirm .pay {
+  border-top: 5rpx solid #eee;
+  padding: 0 35rpx;
+}
+.confirm .order .label {
+  color: #333;
+  font-size: 24rpx;
+  line-height: 66rpx;
+}
+.confirm .order .row {
+  line-height: 90rpx;
+}
+.confirm .order .row:last-of-type {
+  border-top: 1rpx solid #eee;
+}
+.confirm .order .goods-item {
+  width: 500rpx;
+  height: 125rpx;
+}
+.confirm .order .goods-image {
+  float: left;
+  margin-right: 20rpx;
+  width: 125rpx;
+  height: 125rpx;
+}
+.confirm .order .name {
+  font-size: 30rpx;
+  line-height: 50rpx;
+}
+.confirm .order .number {
+  margin-top: 38rpx;
+  color: #666;
+  font-size: 30rpx;
+  line-height: 30rpx;
+}
+.confirm .order .price {
+  font-size: 36rpx;
+  line-height: 36rpx;
+}
+.confirm .order .discount {
+  color: #e94215;
+}
+.confirm .order .icon-right-1 {
+  margin-bottom: -2rpx;
+}
+.confirm .pay .label {
+  padding-top: 31rpx;
+  color: #333;
+  font-size: 24rpx;
+}
+.confirm .pay .type .radio {
+  display: inline-block;
+  margin: 0 25rpx;
+  padding: 19rpx 0;
+  height: 35rpx;
+  color: #000;
+  font-size: 30rpx;
+  line-height: 35rpx;
+}
+.confirm .pay .icon-radio-1,
+.confirm .pay .icon-radio-1-checked,
+.confirm .pay .icon-weixinpay,
+.confirm .pay .icon-alipay,
+.confirm .pay .icon-card-red {
+  vertical-align: middle;
+}
+.confirm .pay .icon-weixinpay,
+.confirm .pay .icon-alipay,
+.confirm .pay .icon-card-red {
+  margin-left: 15rpx;
+  margin-right: 5rpx;
+}
+.confirm .pay .row {
+  margin-top: 30rpx;
+}
+.confirm .pay .row:last-of-type {
+  border-top: 1rpx solid #eee;
+  padding-top: 30rpx;
+}
+.confirm .pay .price {
+  font-size: 40rpx;
+}
+.confirm .btns {
+  margin: 100rpx auto 26rpx;
+  text-align: center;
+}
+.confirm .btns .btn {
+  display: inline-block;
+  margin: 0 19rpx;
+  border: 1rpx solid #aaa;
+  border-radius: 10rpx;
+  width: 248rpx;
+  height: 52rpx;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 52rpx;
+}
+.confirm .btns .btn.active {
+  border-color: #e94215;
+  color: #fff;
+  background: #e94215;
+}

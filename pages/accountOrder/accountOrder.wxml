@@ -1,0 +1,41 @@
+<view class="tab">
+  <text class="{{orderType === 'all' ? 'active' : ''}}" data-type="all" bindtap="chooseOrderType">全部</text>
+  <text class="{{orderType === 'incomplete' ? 'active' : ''}}" data-type="incomplete" bindtap="chooseOrderType">未完成</text>
+  <text class="{{orderType === 'completed' ? 'active' : ''}}" data-type="completed" bindtap="chooseOrderType">已完成</text>
+</view>
+<view class="order-list" hidden="{{orderType !== 'all'}}">
+  <view class="item" wx:for="{{allList}}" wx:key="{{item.orid}}">
+    <image class="order-image" src="{{baseURL}}{{item.img1}}" mode="aspectFill" ></image>
+    <view class="name">{{item.cname ? item.cname : ""}}</view>
+    <view class="datetime">{{item.ctime ? item.ctime : ""}}</view>
+    <view class="state completed">{{item.psend === 0 ? '未完成' : '已完成'}}</view>
+    <view class="row">
+      <view class="price">总价：{{item.money}}</view>
+      <view class="one-more">再来一单</view>
+    </view>
+  </view>
+</view>
+<view class="order-list" hidden="{{orderType !== 'incomplete'}}">
+  <view class="item" wx:for="{{incompleteList}}" wx:key="{{item.orid}}">
+    <image class="order-image" src="{{baseURL}}{{item.img1}}" mode="aspectFill" ></image>
+    <view class="name">{{item.cname ? item.cname : ""}}</view>
+    <view class="datetime">{{item.ctime ? item.ctime : ""}}</view>
+    <view class="state completed">{{item.psend === 0 ? '未完成' : '已完成'}}</view>
+    <view class="row">
+      <view class="price">总价：{{item.money}}</view>
+      <view class="one-more">再来一单</view>
+    </view>
+  </view>
+</view>
+<view class="order-list" hidden="{{orderType !== 'completed'}}">
+  <view class="item" wx:for="{{completedList}}" wx:key="{{item.orid}}">
+    <image class="order-image" src="{{baseURL}}{{item.img1}}" mode="aspectFill" ></image>
+    <view class="name">{{item.cname ? item.cname : ""}}</view>
+    <view class="datetime">{{item.ctime ? item.ctime : ""}}</view>
+    <view class="state completed">{{item.psend === 0 ? '未完成' : '已完成'}}</view>
+    <view class="row">
+      <view class="price">总价：{{item.money}}</view>
+      <view class="one-more">再来一单</view>
+    </view>
+  </view>
+</view>

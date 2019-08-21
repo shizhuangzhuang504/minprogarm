@@ -1,0 +1,44 @@
+<button class="authorize" open-type="getUserInfo" bindgetuserinfo="userLogin" wx:if="{{!loginStatus}}"></button>
+<swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="rgba(238, 238, 238, 1)" indicator-active-color="#e94215" circular autoplay>
+  <swiper-item wx:for="{{swiperImgs}}" wx:key="index">
+    <image class="slide-image" src="{{baseURL}}/{{item.path}}" mode="aspectFill" lazy-load="{{true}}"></image>
+  </swiper-item>
+</swiper>
+<view class="shop">
+  <view class="search">
+    <text>匠丰欢迎您！</text>
+  </view>
+  <view class="shop-name">{{shopName ? shopName : ''}}</view>
+  <view class="distance">
+    <image src="/assets/image/icon-location-1.png"></image>
+    <text>{{shopDistance ? '附近门店距您' + shopDistance + '米' : ''}}</text>
+  </view>
+  <view class="order-btn {{isOutRange === 0? 'disabled' : 'usable'}}" bindtap="order">
+    <view>{{isOutRange === 0 ? '超出服务范围' : '马上点餐'}}</view>
+    <view>{{isOutRange === 0 ? 'Out of range' : 'Order now'}}</view>
+  </view>
+</view>
+<view class="ad">
+  <view class="ad-image">
+    <image class="ad-image" src="./../../assets/image/ad-free.jpg" mode="widthFix" lazy-load="{{true}}"></image>
+    <button class="share" open-type="share"></button>
+  </view>
+  <image class="ad-image" src="./../../assets/image/ad-discount.jpg" mode="widthFix" lazy-load="{{true}}" bindtap="couponCard"></image>
+</view>
+<view class="goods">
+  <view class="head">
+    <image src="/assets/image/hot.png"></image>
+    <text>爆款推荐</text>
+  </view>
+  <view class="list">
+    <index-goods class="goods-item" wx:for="{{hotList}}" wx:key="{{item.id}}" goods="{{item}}" bindgoodscalc="goodsCalc"></index-goods>
+  </view>
+</view>
+<view class="free-wrap" hidden="{{iscoupon}}">
+  <view class="free" bindtap="receivecoupon">
+    <text class="cancel" catchtap="cancel">x</text>
+    <image src="/assets/image/coupon.png"></image>
+    <text class="date">2019年8月16日  —  2019年9月02日</text>
+  </view>
+</view>
+<calc-car class="calc-car" goodsPrice="{{goodsPrice}}" diffPrice="{{diffPrice}}"></calc-car>

@@ -1,0 +1,72 @@
+<button class="authorize" open-type="getUserInfo" bindgetuserinfo="userLogin" wx:if="{{!loginStatus}}"></button>
+<view class="tab">
+  <text class="{{type === 'coupon' ? 'active' : ''}}" data-type="coupon" bindtap="chooseType">优惠券</text>
+  <text class="{{type === 'card' ? 'active' : ''}}" data-type="card" bindtap="chooseType">优惠储值卡</text>
+</view>
+<view class="coupon-list" hidden="{{type !== 'coupon'}}">
+  <view class="item {{item.state === 1 ? 'overdue' : ''}}" wx:for="{{couponList}}" wx:key="{{item.id}}" data-index="{{index}}" bindtap="chooseCoupon">
+    <view class="wrap">
+      <image class="{{item.state === 'overdue' ? 'icon-noodle-gray' : 'icon-noodle'}}" src="./../../assets/image/{{item.state === 1 ? 'icon-noodle-gray' : 'icon-noodle'}}.png" mode="aspectFill" ></image>
+      <view class="row">
+        <view class="col">
+          <view class="discount">{{item.discount}}{{type ? "折":"元"}}</view>
+          <view class="onOff">
+            使用规则
+            <image class="icon-down" src="./../../assets/image/icon-down.png" mode="aspectFill" ></image>
+          </view>
+        </view>
+        <view class="col">
+          <view class="name">{{item.cname}}</view>
+          <view class="date">{{item.sttime}} —— {{item.entime}}</view>
+        </view>
+      </view>
+      <view class="desc">{{item.info}}</view>
+      <image class="icon-overdue" src="./../../assets/image/icon-overdue.png" mode="aspectFill" wx:if="{{item.status === 1}}" ></image>
+    </view>
+  </view>
+</view>
+<view class="card" hidden="{{type !== 'card'}}">
+  <view class="panel">
+    <view class="row">
+      <view class="col">
+        <image class="logo-white" src="./../../assets/image/logo-white.png" mode="aspectFill" ></image>
+        <view class="name">匠丰大骨面</view>
+        <view class="number">卡号：1324654465</view>
+      </view>
+      <view class="col">
+        余额（元）
+        <view class="amount">{{money}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="nav">
+    <view class="row">
+      <view>消费记录</view>
+      <image class="icon-right-1" src="./../../assets/image/icon-right-1.png" mode="aspectFill" ></image>
+    </view>
+    <view class="row">
+      <view>优惠折扣</view>
+      <view>
+        <text class="discount" wx:if="{{discount}}">{{discount}}折</text>
+        <image class="icon-right-1" src="./../../assets/image/icon-right-1.png" mode="aspectFill" ></image>
+      </view>
+    </view>
+    <view class="row">
+      <view>优惠权益</view>
+      <image class="icon-right-1" src="./../../assets/image/icon-right-1.png" mode="aspectFill" ></image>
+    </view>
+    <view class="row">
+      <view>优惠储值</view>
+    </view>
+    <view class="charge">
+      <view class="tips" hidden="{{!isChargeTips}}">
+        送<text>20</text>元
+      </view>
+      <input type="number" bindinput="chargeInput" />
+      <text class="btn" bindtap="recharge">充值</text>
+    </view>
+    <view class="desc" wx:if="{{rebateList.length}}">
+      <view wx:for="{{rebateList}}" wx:key="{{item.id}}">{{item.min}}~{{item.max}}赠送{{item.piont}}%</view>
+    </view>
+  </view>
+</view>

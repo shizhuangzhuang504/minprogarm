@@ -1,0 +1,48 @@
+.index-goods {
+  margin-bottom: 22rpx;
+  box-shadow: 2px 6px 8px 2px rgba(9, 1, 4, 0.19);
+  /* border-radius: 10rpx; */
+  width: 360rpx;
+  height: 504rpx;
+  background: #fff;
+  overflow: hidden;
+}
+.index-goods .goods-image {
+  width: 100%;
+  height: 360rpx;
+}
+.index-goods .name {
+  margin-top: 24rpx;
+  /* padding-left: 10rpx; */
+  color: #333;
+  font-size: 30rpx;
+}
+.index-goods .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26rpx;
+}
+.index-goods .price {
+  padding-left: 12rpx;
+  color: #e94215;
+  font-size: 24rpx;
+}
+.index-goods .number {
+  padding-right: 20rpx;
+}
+.index-goods .icon-number-reduce,
+.index-goods .icon-number-add,
+.index-goods .number text {
+  vertical-align: top;
+}
+.index-goods .number text {
+  display: inline-block;
+  width: 58rpx;
+  height: 40rpx;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+

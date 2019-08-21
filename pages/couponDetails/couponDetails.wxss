@@ -1,0 +1,63 @@
+.container{
+  padding:67rpx 43rpx 0;
+  font-family: AlibabaPuHuiTiB;
+}
+.discount{
+	font-size: 85rpx;
+	letter-spacing: 4rpx;
+	color: #e94215;
+  font-weight: 600;
+}
+.type{
+  font-family: MicrosoftYaHei;
+	font-size: 50rpx;
+	letter-spacing: 3rpx;
+	color: #333333;
+  margin-left:39rpx;
+}
+.title{
+  margin:43rpx 0 74rpx -13rpx;
+	font-size: 48rpx;
+	font-weight: 600;
+	letter-spacing: 2rpx;
+	color: #333333;
+  padding-bottom:26rpx;
+  border-bottom:4px dotted #ddd;
+  text-align: center;
+}
+.term{
+	font-size: 30rpx;
+	letter-spacing: 2px;
+	color: #333333;
+  overflow: hidden;
+  font-weight: 600;
+}
+.term>view{
+  float:left;
+}
+.trem-title{
+  margin-right:24rpx;
+}
+.end{
+  margin:41rpx 0 57rpx;
+}
+.rule-details{
+  font-size: 24rpx;
+	line-height: 40rpx;
+	letter-spacing: 1rpx;
+	color: #000000;
+  margin: 21rpx 0 143rpx;
+}
+image{
+  width:510rpx;
+  height:108rpx;
+  margin:51rpx auto 20rpx;
+  display: block;
+}
+.name{
+	font-size: 36rpx;
+	font-weight: 600;
+	letter-spacing: 5rpx;
+	color: #000000;
+  text-align: center;
+}

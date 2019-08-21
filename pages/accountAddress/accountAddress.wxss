@@ -1,0 +1,92 @@
+page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 1rpx solid #a0a0a0;
+}
+.list {
+  border-top: 10rpx solid #eee;
+  padding: 0 45rpx;
+}
+.list .label {
+  color: #666;
+  font-size: 24rpx;
+  line-height: 64rpx;
+}
+.list .all {
+  margin-top: 10rpx;
+}
+.list .all .label {
+  text-indent: 40rpx;
+}
+.list .item {
+  position: relative;
+  box-shadow: 0 0 15rpx rgba(170, 170, 170, .3);
+  margin-bottom: 20rpx;
+  border-radius: 10rpx;
+  padding: 0 60rpx 21rpx;
+}
+.list .item .icon-radio,
+.list .item .icon-edit {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.list .item .icon-radio {
+  left: 3rpx;
+}
+.list .item .icon-edit {
+  right: 30rpx;
+}
+.list .item .title {
+  padding-top: 15rpx;
+  padding-bottom: 18rpx;
+  max-width: 540rpx;
+  color: #000;
+  font-size: 30rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.list .item .tag {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 30rpx;
+  border: 1rpx solid #e94215;
+  border-radius: 5rpx;
+  width: 64rpx;
+  height: 34rpx;
+  color: #e94215;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  text-align: center;
+}
+.list .item .mobile,
+.list .item .username {
+  display: inline-block;
+  vertical-align: top;
+  height: 36rpx;
+  color: #666;
+  font-size: 30rpx;
+  line-height: 36rpx;
+}
+.list .item .username {
+  margin-left: 30rpx;
+  font-size: 28rpx;
+}
+.add {
+  margin: 0 auto 22rpx;
+  border-radius: 40rpx;
+  width: 600rpx;
+  height: 75rpx;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 75rpx;
+  text-align: center;
+  background: #e94215;
+}
+.add .icon-add {
+  vertical-align: top;
+  margin-top: 23rpx;
+  margin-right: 15rpx;
+}

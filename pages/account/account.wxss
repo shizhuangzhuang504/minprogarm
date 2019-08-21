@@ -1,0 +1,45 @@
+.account {
+  padding: 15rpx 0 40rpx;
+  height: 175rpx;
+  text-align: center;
+  background: #e94215;
+}
+.account .avatar {
+  border-radius: 50%;
+  width: 120rpx;
+  height: 120rpx;
+}
+.account .nickname {
+  margin-top: 31rpx;
+  height: 24rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+.nav {
+  margin-top: 10rpx;
+}
+.nav .link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-bottom: 1rpx solid #e5e5e5;
+  margin: 0 45rpx;
+  padding-left: 70rpx;
+  height: 99rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+.icon-vip,
+.icon-address,
+.icon-order,
+.icon-card,
+.icon-feedback {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-45%);
+}
+.nav .link.change {
+  border-bottom: none;
+}

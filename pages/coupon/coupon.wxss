@@ -1,0 +1,235 @@
+.tab {
+  border-bottom: 1rpx solid #d2d2d2;
+  padding-bottom: 5rpx;
+  text-align: center;
+}
+.tab text {
+  display: inline-block;
+  margin: 0 55rpx;
+  border-bottom: 4rpx solid transparent;
+  padding: 30rpx 20rpx 20rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+.tab text.active {
+  border-color: #e94215;
+}
+.coupon-list {
+  margin: 24rpx 45rpx 0;
+}
+.coupon-list .item {
+  margin-bottom: 20rpx;
+  box-shadow: 0 0 5rpx rgba(170, 170, 170, .2);
+  border-radius: 15rpx;
+  padding: 10rpx 18rpx;
+}
+.coupon-list .item .wrap {
+  position: relative;
+  border: 3rpx solid #e94215;
+  border-radius: 10rpx;
+  padding: 55rpx 20rpx 25rpx;
+}
+.coupon-list .item .wrap::before,
+.coupon-list .item .wrap::after {
+  content: '';
+  position: absolute;
+  left: 147rpx;
+  border-left: 3rpx solid #e94215;
+  border-right: 3rpx solid #e94215;
+  width: 50rpx;
+  height: 22rpx;
+  background: #fff;
+}
+.coupon-list .item .wrap::before {
+  top: -2rpx;
+  border-bottom: 3rpx solid #e94215;
+  border-radius: 0 0 50rpx 50rpx;
+}
+.coupon-list .item .wrap::after {
+  bottom: -1rpx;
+  border-top: 3rpx solid #e94215;
+  border-radius: 50rpx 50rpx 0 0;
+}
+.coupon-list .item .icon-noodle,
+.coupon-list .item .icon-noodle-gray {
+  position: absolute;
+  top: 46rpx;
+  right: 26rpx;
+  z-index: -1;
+}
+.coupon-list .item .row {
+  display: flex;
+  align-content: flex-start;
+}
+.coupon-list .item .col:first-of-type {
+  width: 152rpx;
+}
+.coupon-list .item .discount {
+  margin-left: 20rpx;
+  margin-bottom: 15rpx;
+  color: #e94215;
+  font-size: 30rpx;
+}
+.coupon-list .item .discount::first-letter {
+  font-size: 48rpx;
+}
+.coupon-list .item .onOff {
+  position: relative;
+  bottom: -20rpx;
+  margin-left: 10rpx;
+  color: #666;
+  font-size: 20rpx;
+}
+.coupon-list .item .icon-down {
+  vertical-align: middle;
+  margin-left: 5rpx;
+  transform: rotate(180deg);
+}
+.coupon-list .item .col:nth-of-type(2) {
+  border-left: 2rpx dashed #d2d2d2;
+  padding: 4rpx 0 8rpx 25rpx;
+}
+.coupon-list .item .name {
+  color: #333;
+  font-size: 30rpx;
+  text-indent: -10rpx;
+}
+.coupon-list .item .date {
+  margin-top: 24rpx;
+  color: #666;
+  font-size: 20rpx;
+}
+.coupon-list .item .desc {
+  margin-top: 38rpx;
+  border-top: 2rpx dashed #d2d2d2;
+  padding-top: 15rpx;
+  padding-bottom: 5rpx;
+  color: #000;
+  font-size: 20rpx;
+  line-height: 30rpx;
+}
+.coupon-list .item.overdue .wrap,
+.coupon-list .item.overdue .wrap::before,
+.coupon-list .item.overdue .wrap::after {
+  border-color: #aaa;
+}
+.coupon-list .item.overdue .discount {
+  color: #aaa;
+}
+.coupon-list .item.overdue .name,
+.coupon-list .item.overdue .desc {
+  color: #999;
+}
+.coupon-list .item.overdue .icon-overdue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  transform: translate3d(-50%, -48%, 0);
+}
+.card {
+  margin: 30rpx 45rpx 0;
+}
+.card .row {
+  display: flex;
+  justify-content: space-between;
+}
+.card .panel {
+  box-shadow: 0 0 15rpx rgba(233, 66, 21, .5);
+  border-radius: 15rpx;
+  padding: 30rpx 0;
+  color: #fff;
+  background: #e94215;
+}
+.card .panel .col:first-of-type {
+  border-right: 2rpx dashed #fff;
+  width: 445rpx;
+}
+.card .panel .logo-white {
+  float: left;
+  margin: 8rpx 30rpx 8rpx 50rpx;
+}
+.card .panel .name {
+  padding-top: 12rpx;
+  font-size: 30rpx;
+}
+.card .panel .number {
+  margin-top: 15rpx;
+  font-size: 24rpx;
+}
+.card .panel .col:last-of-type {
+  padding-top: 14rpx;
+  width: 213rpx;
+  font-size: 18rpx;
+  text-align: center;
+}
+.card .panel .amount {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}
+.card .nav {
+  margin-top: 22rpx;
+}
+.card .nav .row {
+  border-bottom: 1rpx solid #eee;
+  padding: 29rpx 0 20rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+.card .nav .row:nth-of-type(4) {
+  border-bottom: none;
+}
+.card .nav .discount {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20rpx;
+  color: #000;
+  line-height: 30rpx;
+}
+.card .nav .charge {
+  position: relative;
+  margin-left: 30rpx;
+}
+.card .nav .charge .tips {
+  position: absolute;
+  top: 50%;
+  left: 325rpx;
+  color: #999;
+  font-size: 24rpx;
+  transform: translateY(-55%);
+}
+.card .nav .charge .tips text {
+  margin: 0 10rpx;
+  color: #e94215;
+}
+.card .nav .charge input {
+  display: inline-block;
+  border: 1rpx solid #d2d2d2;
+  padding: 0 20rpx;
+  width: 408rpx;
+  height: 52rpx;
+  color: #333;
+  font-size: 24rpx;
+  line-height: 52rpx;
+  text-align: right;
+}
+.card .nav .charge .btn {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 30rpx;
+  width: 120rpx;
+  height: 54rpx;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 54rpx;
+  text-align: center;
+  background: #e94215;
+}
+.card .nav .desc {
+  margin-top: 7rpx;
+  width: 510rpx;
+  color: #666;
+  font-size: 30rpx;
+  line-height: 56rpx;
+  text-align: center;
+}

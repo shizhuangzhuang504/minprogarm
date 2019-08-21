@@ -1,0 +1,42 @@
+<button class="authorize" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" wx:if="{{!loginStatus}}"></button>
+<view class="account">
+  <image class="avatar" src="{{avatarUrl}}" mode="aspectFill" ></image>
+  <view class="nickname">{{nickName}}</view>
+</view>
+<view class="nav">
+  <navigator class="link" url="/pages/accountVip/accountVip">
+    <view>
+      <image class="icon-vip" src="./../../assets/image/icon-vip.png" mode="aspectFill" ></image>
+      <text>会员信息</text>
+    </view>
+    <image class="icon-right" src="./../../assets/image/icon-right.png" mode="aspectFill" ></image>
+  </navigator>
+  <navigator class="link" url="/pages/accountAddress/accountAddress">
+    <view>
+      <image class="icon-address" src="./../../assets/image/icon-address.png" mode="aspectFill" ></image>
+      <text>收货地址</text>
+    </view>
+    <image class="icon-right" src="./../../assets/image/icon-right.png" mode="aspectFill" ></image>
+  </navigator>
+  <navigator class="link" url="/pages/accountOrder/accountOrder">
+    <view>
+      <image class="icon-order" src="./../../assets/image/icon-order.png" mode="aspectFill" ></image>
+      <text>外卖订单</text>
+    </view>
+    <image class="icon-right" src="./../../assets/image/icon-right.png" mode="aspectFill" ></image>
+  </navigator>
+  <view class="link change"  bindtap="tocoupon">
+    <view>
+      <image class="icon-card" src="./../../assets/image/icon-card.png" mode="aspectFill" ></image>
+      <text>我的充值卡</text>
+    </view>
+    <image class="icon-right" src="./../../assets/image/icon-right.png" mode="aspectFill" ></image>
+  </view>
+  <!-- <navigator class="link change" url="/pages/accountFeedback/accountFeedback">
+    <view>
+      <image class="icon-feedback" src="./../../assets/image/icon-feedback.png" mode="aspectFill" ></image>
+      <text>意见反馈</text>
+    </view>
+    <image class="icon-right" src="./../../assets/image/icon-right.png" mode="aspectFill" ></image>
+  </navigator> -->
+</view>

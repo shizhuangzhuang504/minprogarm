@@ -1,0 +1,31 @@
+page {
+  background: #0f0705;
+}
+.banner {
+  position: absolute;
+  left: 0;
+  bottom: 454rpx;
+  width: 100%;
+}
+.container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding-top: 65rpx;
+  width: 100%;
+  background: #dca970;
+}
+.content {
+  box-sizing: border-box;
+  padding: 96rpx 0 0 55rpx;
+  height: 392rpx;
+  background: #e94215;
+}
+.content .info {
+  margin-top: 92rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+.content .telephone {
+  margin-left: 60rpx;
+}

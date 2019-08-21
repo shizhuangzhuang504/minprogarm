@@ -1,0 +1,41 @@
+page {
+  border-top: 1rpx solid #a0a0a0;
+}
+.shop {
+  border-top: 10rpx solid #eee;
+}
+.shop .item {
+  margin: 0 45rpx;
+  padding-top: 30rpx;
+}
+.shop .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 14rpx;
+}
+.shop .row .name {
+  color: #000;
+  font-size: 30rpx;
+}
+.shop .row .icon-location-1 {
+  vertical-align: top;
+  margin-right: 10rpx;
+}
+.shop .row .distance {
+  color: #666;
+  font-size: 24rpx;
+}
+.shop .address,
+.shop .telephone {
+  margin-left: 20rpx;
+  color: #000;
+  font-size: 24rpx;
+}
+.shop .address {
+  margin-top: 16rpx;
+}
+.shop .telephone {
+  margin-top: 26rpx;
+}

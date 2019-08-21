@@ -1,0 +1,4 @@
+<image class="banner" src="./../../assets/image/banner-free.jpg" mode="widthFix" ></image>
+<input class="mobile" value="{{mobile}}" type="number" placeholder="请输入手机号" placeholder-style="placeholder" placeholder-class="input-placeholder" maxlength="11" bindinput="mobileInput"></input>
+<view class="btn {{isUsable ? '' : 'disabled'}}" bindtap="get">免费领取</view>
+<text class="desc">享用匠丰大骨面</text>

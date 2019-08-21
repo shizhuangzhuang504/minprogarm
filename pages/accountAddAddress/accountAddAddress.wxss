@@ -1,0 +1,106 @@
+page {
+  border-top: 1rpx solid #a0a0a0;
+}
+.form {
+  border-top: 10rpx solid #eee;
+  padding: 0 45rpx;
+}
+.form .row {
+  position: relative;
+  border-bottom: 1rpx solid #eee;
+  line-height: 88rpx;
+}
+.form .row:last-of-type {
+  border-bottom: none;
+}
+.form .label,
+.form input,
+.form textarea {
+  display: inline-block;
+  vertical-align: top;
+}
+.form .label {
+  width: 175rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+.form input,
+.form textarea,
+.form radio-group {
+  display: inline-block;
+  width: 455rpx;
+  height: auto;
+  font-size: 28rpx;
+}
+.form input {
+  padding: 24rpx 0 12rpx;
+  line-height: 59rpx;
+}
+.form textarea {
+  padding: 32rpx 0 22rpx;
+  line-height: 32rpx;
+}
+.form-radio {
+  display: inline-block;
+  margin-right: 80rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+.form-radio .icon-radio,
+.form-radio .icon-radio-checked {
+  vertical-align: top;
+  margin-top: 28rpx;
+  margin-right: 10rpx;
+}
+.form .icon-location {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 100;
+  transform: translateY(-50%);
+}
+.form .tag {
+  display: inline-block;
+  margin-right: 30rpx;
+  border: 2rpx solid #bfbfbf;
+  border-radius: 40rpx;
+  width: 106rpx;
+  height: 40rpx;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 38rpx;
+  text-align: center;
+}
+.form .tag.active {
+  border-color: #e94215;
+  color: #fff;
+  background: #e94215;
+}
+.form .common {
+  padding: 26rpx 0;
+  color: #333;
+  font-size: 24rpx;
+  line-height: 35rpx;
+}
+.form .icon-checkbox,
+.form .icon-checkbox-checked {
+  vertical-align: middle;
+  margin-right: 5rpx;
+}
+.form .hidden {
+  display: none;
+}
+.save {
+  position: absolute;
+  left: 50%;
+  bottom: 22rpx;
+  border-radius: 40rpx;
+  width: 600rpx;
+  height: 75rpx;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 75rpx;
+  text-align: center;
+  background: #e94215;
+  transform: translateX(-50%);
+}

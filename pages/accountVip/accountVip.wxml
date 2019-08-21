@@ -1,0 +1,27 @@
+<view class="account">
+  <image class="avatar" src="{{avatarUrl}}" mode="aspectFill" ></image>
+  <image class="icon-medal" src="./../../assets/image/icon-medal.png" mode="aspectFill" ></image>
+  <view class="nickname">{{nickName}}</view>
+</view>
+<view class="item row">
+  <view>
+    <image class="icon-mobile" src="./../../assets/image/icon-mobile.png" mode="aspectFill" ></image>
+    <text>绑定手机号</text>
+  </view>
+  <text class="mobile" wx:if="{{mobile}}">{{mobile}}</text>
+  <button open-type="getPhoneNumber" wx:if="{{!mobile}}" bindgetphonenumber="getphonenumber"></button>
+</view>
+<view class="item row">
+  <view>
+    <image class="icon-cost" src="./../../assets/image/icon-cost.png" mode="aspectFill" ></image>
+    <text>累计消费</text>
+  </view>
+  <text>￥{{consume}}</text>
+</view>
+<view class="item equity">
+  <view>
+    <image class="icon-equity" src="./../../assets/image/icon-equity.png" mode="aspectFill" ></image>
+    <text>会员权益</text>
+  </view>
+  <view class="desc">身份的象征，彰显您的会员身份！拒绝等待，作为最尊贵的会员，匠丰将优先为您处理问题</view>
+</view>

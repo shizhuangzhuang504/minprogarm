@@ -1,0 +1,10 @@
+<image class="banner" src="./../../assets/image/banner-startup.jpg" mode="widthFix" ></image>
+<view class="container">
+  <view class="content">
+    <image class="logo" src="./../../assets/image/logo.png" mode="aspectFill" ></image>
+    <view class="info">
+      <text class="address">地址：辽宁省抚顺市新华街</text>
+      <text class="telephone">电话：1234567489</text>
+    </view>
+  </view>
+</view>

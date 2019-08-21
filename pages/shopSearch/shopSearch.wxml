@@ -1,0 +1,13 @@
+<view class="shop">
+  <view class="item" wx:for="{{shopList}}" wx:key="{{item.id}}" data-index="{{index}}" bindtap="choose">
+    <view class="row">
+      <view class="name">
+        <image class="icon-location-1" src="./../../assets/image/icon-location-1.png" mode="aspectFill" ></image>
+        {{item.rname}}
+      </view>
+      <view class="distance">距您{{item.distance}}m</view>
+    </view>
+    <view class="address">地址：{{item.address}}</view>
+    <view class="telephone">电话：{{item.mobile}}</view>
+  </view>
+</view>

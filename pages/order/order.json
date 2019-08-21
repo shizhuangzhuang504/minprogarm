@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "order-goods": "/components/order-goods/order-goods",
+    "calc-car": "/components/calc-car/calc-car"
+  }
+}

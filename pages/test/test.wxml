@@ -1,0 +1,109 @@
+<!-- 左边的菜单 -->
+<view class="foodmenu">
+	<view 
+	class="item {{index==cateListActiveIndex && 'active'}}" 
+	bindtap="scrollToCategory"
+	wx:for="{{goods}}" data-index="{{index}}" 
+	data-foodCount="{{item.items.length}}" 
+	wx:key="title" 
+	>
+		{{item.title}}
+		{{item.items.length}}
+	</view>
+</view>
+
+<!-- 右边菜品 -->
+<scroll-view class="goods_wrap" scroll-top="{{listViewScrollTop}}"  bindscroll="foodListScrolling" scroll-y>
+	<block wx:for="{{goods}}" wx:key="title">
+		<view class="category_title">{{item.title}}</view>
+		<view class="food" wx:for="{{item.items}}" wx:for-item="food" wx:for-index="foodindex" wx:key="{{food.id}}">
+			<image src="{{food.image}}" data-url="{{food.image}}" bindtap="bindImgPreView" />
+			<view class="info">
+				<view class="title">{{food.title}}</view>
+				<view class="label">月销量：{{food.msale}}</view>
+				<view class="tags">
+					<tags tagArray="{{food.tags}}"></tags>
+				</view>
+				<view class="price">￥{{food.price}}</view>
+				<view class="control">
+					<block wx:if="{{food.count}}">
+						<!-- 如果数量小于1，就不显示减和文本框 -->
+						<i-icon type="offline" data-cidx="{{index}}" data-fidx="{{foodindex}}" size="{{controlSize}}"  color="{{colorReduce}}" bindtap="foodCountReduce" />
+						<input  value="{{food.count}}" />
+					</block>
+					<i-icon type="add" data-cidx="{{index}}" data-fidx="{{foodindex}}"  size="{{controlSize}}" color="{{colorAdd}}" bindtap="foodCountAdd" />
+				</view>
+				<!-- <cartcontrol food="food" bindfoodCountReduce="foodCountReduce" bindfoodCountAdd="foodCountAdd"></cartcontrol> -->
+			</view>
+			
+		</view>
+	</block>
+	<view class="empty">已经到底了！</view>
+</scroll-view>
+
+
+<!-- 购物车列表 -->
+<view class="cart_wrap"  hidden="{{hideCartList}}">
+	<view class="cart_control">
+		<view class="title">购物车中的商品</view>
+		<view class="button" bindtap="clearCart"><i-icon type="trash_fill" size="26"/>清空</view>
+	</view>
+	<scroll-view class="cart_list" scroll-y>
+		<block wx:for="{{goods}}" wx:key="title">
+			<view class="row" wx:for="{{item.items}}" wx:for-item="food" wx:for-index="foodindex" wx:key="{{food.id}}" wx:if="{{food.count}}">
+				<view class="title">{{food.title}}</view>
+				<view class="price">￥{{food.price}}</view>
+				<view class="control">
+					<i-icon type="offline" data-cidx="{{index}}" data-fidx="{{foodindex}}" size="{{controlSize}}"  color="{{colorReduce}}" bindtap="foodCountReduce"/>
+					<input  value="{{food.count}}" />
+					<i-icon type="add" data-cidx="{{index}}" data-fidx="{{foodindex}}"  size="{{controlSize}}" color="{{colorAdd}}" bindtap="foodCountAdd" />
+				</view>
+			</view>
+		</block>
+	</scroll-view>
+</view>
+<view class="mask" bindtap="toggleCartList" hidden="{{hideCartList}}"></view>
+
+
+<!-- ********************************下一步******************************** -->
+<view class="cart" >
+	<view class="icon"  bindtap="toggleCartList">
+		<view class="badge" wx:if="{{vmodule.CARTINFO(goods)._count}}">{{vmodule.CARTINFO(goods)._count}}</view>
+		<i-icon type="publishgoods_fill" size="40" color="#fff"/>
+	</view>
+	<view class="totalprice"> 
+		￥<text class="number">{{vmodule.CARTINFO(goods)._totalPrice}}</text> 
+		<text class="tip">不满48配送费5元</text>
+	</view>
+	<block wx:if="{{vmodule.CARTINFO(goods)._totalPrice >= 20}}">
+		<view class="next active" bindtap="submitOrder">下一步</view>
+	</block>
+	<block wx:else>
+		<view class="next">未满20元</view>
+	</block>
+</view>
+
+
+
+<!-- 大图层 -->
+<view class="preview_image" hidden="{{hidePreview}}" bindtap="hideIMgpreview">
+	<image src="{{preImageUrl}}" mode="aspectFill" style="width:100%" bindtap="hideIMgpreview"/>
+</view>
+
+<!-- ***********************************wxs******************************* -->
+<wxs module="vmodule">
+	function CARTINFO(o){
+		var _totalPrice = 0;
+		var _count = 0;
+		o.forEach(function(item,cidx){
+			item.items.forEach(function(foods,fidx){
+				if(foods.count){
+					_count += foods.count
+					_totalPrice += foods.count*foods.price
+				}
+			})
+		})
+		return {_totalPrice,_count}
+	}
+	module.exports.CARTINFO = CARTINFO
+</wxs>

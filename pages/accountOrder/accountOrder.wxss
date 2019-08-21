@@ -1,0 +1,75 @@
+page {
+  border-top: 1rpx solid #a0a0a0;
+}
+.tab {
+  border-top: 10rpx solid #eee;
+  text-align: center;
+}
+.tab text {
+  display: inline-block;
+  margin: 0 55rpx;
+  border-bottom: 4rpx solid transparent;
+  padding: 30rpx 5rpx 22rpx;
+  color: #000;
+  font-size: 30rpx;
+}
+.tab text.active {
+  border-color: #e94215;
+}
+.order-list {
+  margin: 3rpx 45rpx 0;
+  border-top: 1rpx solid #bfbfbf;
+  padding-top: 20rpx;
+}
+.order-list .item {
+  margin-bottom: 30rpx;
+  height: 200rpx;
+}
+.order-list .item .order-image {
+  float: left;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
+  width: 200rpx;
+  height: 200rpx;
+  overflow: hidden;
+}
+.order-list .item .name {
+  padding-top: 10rpx;
+  color: #000;
+  font-size: 30rpx;
+}
+.order-list .item .datetime {
+  margin-top: 20rpx;
+  height: 24rpx;
+  color: #666;
+  font-size: 24rpx;
+}
+.order-list .item .state {
+  margin-top: 16rpx;
+  color: #000;
+  font-size: 24rpx;
+}
+.order-list .item .state.completed {
+  color: #e94215;
+}
+.order-list .item .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.order-list .item .price {
+  color: #333;
+  font-size: 30rpx;
+}
+.order-list .item .one-more {
+  display: inline-block;
+  border: 2rpx solid #bfbfbf;
+  border-radius: 42rpx;
+  width: 130rpx;
+  height: 42rpx;
+  color: #333;
+  font-size: 24rpx;
+  line-height: 42rpx;
+  text-align: center;
+}
