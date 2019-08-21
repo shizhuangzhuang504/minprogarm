@@ -157,8 +157,7 @@
 }
 .calc-car{
   position: fixed;
-  left: 35rpx;
-  right: 35rpx;
+  left: 13rpx;
   bottom: 20rpx;
   z-index: 999;
 }

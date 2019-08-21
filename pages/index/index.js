@@ -100,7 +100,7 @@ Page({
           console.log(res);
           this.setData({
             shopName: res[0].rname,
-            shopDistance: res[0].distance,
+            shopDistance: Math.floor(res[0].distance),
             // isOutRange: res[0].service
           });
           wx.setStorageSync("isOutRange", res[0].service);

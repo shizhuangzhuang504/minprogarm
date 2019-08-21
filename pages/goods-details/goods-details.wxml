@@ -1,6 +1,6 @@
 <view class="container">
   <view class="goods-details">
-    <image src="{{baseURL}}/{{imgsrc}}" mode="widthFix"></image>
+    <image src="{{baseURL}}/{{imgsrc}}" mode="widthFix"  bindtap="bindImgPreView"></image>
     <view class="food-info">
       <view class="food-name">{{cname}}</view>
       <view class="row">
@@ -18,8 +18,6 @@
         <textarea type="text" bindinput="bindblur"></textarea>
       </view>
       <view class="btn-wrap">
-        <!-- <view class="btn active" bindtap="addgoods">提交</view>
-          <view class="btn" bindtap="cancelgoods">取消</view> -->
       </view>
     </view>
   </view>

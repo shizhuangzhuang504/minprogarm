@@ -1,13 +1,15 @@
 <view class="gobal-bar">
   <view class="calc-bar">
-    <view class="icon">
-      <image class="icon-man" src="./../../assets/image/icon-man.png" mode="aspectFill"></image>
-    </view>
     <view class="number">
-      <view class="price">￥{{goodsPrice}}</view>
-      <view class="remark">另需配送费 ￥{{sendprice}}</view>
-      <view class="tips" wx:if="{{diffPrice > 0}}">差 ￥{{diffPrice}}起送</view>
-      <view class="btn" wx:if="{{diffPrice <= 0 && goodsPrice > 0}}" bindtap="toggleConfirm">结算</view>
+      <view class="number-box">
+        <image class="icon-man" src="./../../assets/image/icon-man.png" mode="widthFix"></image>
+        <view class="price-top">
+          <view class="price">￥{{goodsPrice}}</view>
+          <view class="remark">含￥{{sendprice}}配送费</view>
+        </view>
+        <view class="tips">30元以上免配送费。</view>
+      </view>
+      <view class="btn" bindtap="toggleConfirm">结算</view>
     </view>
   </view>
   <view class="confirm" hidden="{{!isConfirm}}">

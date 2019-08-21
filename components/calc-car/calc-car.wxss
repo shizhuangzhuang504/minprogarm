@@ -1,52 +1,57 @@
-.calc-bar .icon {
-  float: left;
-  position: relative;
-  border-radius: 45rpx 5rpx 5rpx 45rpx;
-  width: 159rpx;
-  height: 90rpx;
-  background: #e94215;
+.calc-bar{
+  width:724rpx;
 }
-.calc-bar .icon .icon-man {
+.calc-bar  .icon-man {
   position: absolute;
-  left: 35rpx;
-  bottom: 5rpx;
+  left: 33rpx;
+  bottom: 0;
+  width:129rpx;
+  height:147rpx;
 }
 .calc-bar .number {
-  margin-left: 164rpx;
-  border-radius: 5rpx 45rpx 45rpx 5rpx;
-  padding-left: 22rpx;
-  height: 90rpx;
+  position:relative;
+  border-radius:20rpx;
+  height: 119rpx;
   background: #e94215;
+  width:724rpx;
+}
+.calc-bar .number-box{
+  position:relative;
+  padding-left:190rpx;
+  width:348rpx;
+  height:119rpx;
+  background:#1b1b1b;
+  border-radius: 20rpx 0 0 20rpx;
 }
 .calc-bar .number .price {
-  padding-top: 12rpx;
+  margin-top: 21rpx;
   color: #fff;
-  font-size: 30rpx;
+  font-size: 36rpx;
 }
 .calc-bar .number .remark {
-  margin-top: 10rpx;
-  color: #ffa086;
-  font-size: 24rpx;
+  margin: 23rpx 0 0 11rpx;
+  color: #dedede;
+  font-size: 26rpx;
 }
 .calc-bar .number .tips {
-  position: absolute;
-  top: 33rpx;
-  right: 32rpx;
-  color: #ffa086;
-  font-size: 24rpx;
-  text-align: right;
+  margin:22rpx 0 0 5rpx;
+  color: #dedede;
+  font-size: 26rpx;
+}
+.calc-bar .price-top{
+  display: flex;
+  align-items: center;
 }
 .calc-bar .number .btn {
   position: absolute;
   top: 0;
   right: 0;
-  width: 170rpx;
-  height: 90rpx;
-  border-left: 1rpx solid #fff;
-  border-radius: 0 45rpx 45rpx 0;
+  width: 186rpx;
+  height: 119rpx;
+  border-radius: 0 20rpx 20rpx 0;
   color: #fff;
-  font-size: 30rpx;
-  line-height: 90rpx;
+  font-size: 36rpx;
+  line-height: 119rpx;
   text-indent: 50rpx;
   background: #eb552d;
 }

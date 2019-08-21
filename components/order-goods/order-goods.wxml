@@ -6,6 +6,7 @@
 <view class="order-goods" bindtap="gogoodsdetail">
   <image class="goods-image" src="{{baseURL}}/{{food.img1}}" data-idx = "{{idx}}" mode="aspectFill" lazy-load="{{true}}"></image>
   <view class="name">{{food.cname}}</view>
+  <view class="desc">描述:{{food.pinfo?food.pinfo:"商品描述描述商品描述描述商品描述描述商品描述描述商品描述描述"}}</view>
   <view class="row">
     <view class="price">￥{{food.price}}</view>
     <view class="number">

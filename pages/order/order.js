@@ -136,7 +136,6 @@ Page({
     let heightCount = 0
     setTimeout(() => {
       this.data.goodsList.forEach((item, index) => {
-        // console.log(item.data.length * this.data.eleFoodHeight);
         heightCount += item.data.length * this.data.eleFoodHeight + this.data.eleCateTitleHeight
         foodAreaHeight.push(heightCount)
       })
@@ -153,10 +152,7 @@ Page({
     } = e.currentTarget.dataset;
     this.setData({
       menuIndex: index,
-      // mid: this.data.menuList[index].mid
     });
-    // this.getGoodsList();
-    console.log(e.currentTarget.dataset);
     let idx = e.currentTarget.dataset.index
     let foodcount = e.currentTarget.dataset.foodcount
     this.setData({
@@ -167,31 +163,12 @@ Page({
   foodListScrolling(event) {
     let scrollTop = event.detail.scrollTop
     let foodAreaHeight = this.data.foodAreaHeight
-    console.log(scrollTop);
     foodAreaHeight.forEach((item, index) => {
       if (scrollTop >= foodAreaHeight[index] && scrollTop < foodAreaHeight[index + 1]) {
         this.setData({
           menuIndex: index
         })
       }
-    })
-  },
-  /**
-   * 点击图片，显示预览图
-   * @param {} e 
-   */
-  bindImgPreView(e) {
-    let preImageUrl = e.target.dataset.url
-    console.log(preImageUrl)
-    this.setData({
-      preImageUrl,
-      hidePreview: false
-    })
-  },
-  hideIMgpreview() {
-    this.setData({
-      preImageUrl: '',
-      hidePreview: true
     })
   },
   // 获取外卖商品

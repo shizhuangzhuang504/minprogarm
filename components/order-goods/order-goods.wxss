@@ -12,10 +12,21 @@
 .order-goods .name {
   padding-top: 4rpx;
   padding-bottom: 10rpx;
-  height: 96rpx;
-  color: #333;
-  font-size: 36rpx;
-  line-height: 48rpx;
+  height: 31rpx;
+  color: #000;
+  font-size: 34rpx;
+  font-weight: 500;
+}
+.order-goods .desc{
+  padding-left:4rpx;
+  width:200rpx;
+  color: #333333;
+  font-size: 24rpx;
+  overflow: hidden;
+  word-break:keep-all;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  margin:10rpx 0 36rpx;
 }
 .order-goods .row {
   display: flex;
@@ -25,7 +36,7 @@
 }
 .order-goods .price {
   color: #e94215;
-  font-size: 36rpx;
+  font-size: 38rpx;
 }
 .order-goods .icon-number-reduce,
 .order-goods .icon-number-add,

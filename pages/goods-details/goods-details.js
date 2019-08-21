@@ -47,16 +47,18 @@ Page({
         title: '已添加',
       })
     },
-  /**
-   * 生命周期函数--监听页面显示
-   */
+//  点击图片，显示预览图
+  bindImgPreView(e) {
+    let preImageUrl = this.data.baseURL+'/'+this.data.imgsrc
+    console.log(preImageUrl)
+    wx.previewImage({
+      current: preImageUrl, // 当前显示图片的http链接
+      urls: [] // 需要预览的图片http链接列表
+    })
+  },
   onShow: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide: function () {
 
   },
