@@ -1,3 +1,6 @@
+const api = require('./../../utils/api');
+const request = require('./../../utils/request');
+const app = getApp();
 Component({
   options: {
     addGlobalClass: true,
@@ -11,18 +14,38 @@ Component({
       type: Number,
       value: 0
     },
+    goodsbprice: { // 包装费
+      type: Number,
+      value: 0
+    },
+    sendprice: { // 配送费
+      type: Number,
+      value: 0
+    },
+    discount: {
+      type: Number,
+      value: 0
+    },
     diffPrice: { // 起送差價
+      type: Number,
+      value: 0
+    },
+    orderTotalPrice: { // 总价
       type: Number,
       value: 0
     },
     number: {
       type: Number,
       value: 0
+    },
+    address: {
+      type: Object,
+      value: {}
     }
   },
   data: {
-    isshow:false,
-    isConfirm:false
+    isshow: false,
+    isConfirm: false,
   },
   methods: {
     //toggle支付页面
@@ -31,8 +54,20 @@ Component({
         isConfirm: !this.data.isConfirm
       });
       if (this.data.isConfirm) {
-        this.totalPriceCalc();
+        // this.totalPriceCalc();
       }
+    },
+    // 订单结算金额计算
+    totalPriceCalc: function() {
+      let {
+        goodsPrice,
+        goodsbprice,
+        sendprice,
+        discount
+      } = this.data;
+      this.setData({
+        orderTotalPrice: goodsPrice + goodsbprice + sendprice - discount
+      });
     },
     //选择地址
     chooseAddress: function() {
@@ -40,6 +75,17 @@ Component({
       api.navigateTo({
         url: '/pages/accountAddress/accountAddress'
       });
+    },
+    getAddress: function() {
+      request.getAddress()
+        .then(res => {
+          if (res.length) {
+            this.setData({
+              addressList: res,
+              curAddress: res[0]
+            });
+          }
+        });
     },
     //选择优惠券
     chooseCoupon: function() {
@@ -76,7 +122,6 @@ Component({
         });
         return;
       }
-      console.log(address);
       if (Object.keys(address).length == 0) {
         api.showToast({
           title: '请选择配送地址',
@@ -85,7 +130,6 @@ Component({
         });
         return;
       }
-      console.log(orderGoodsList);
       let ordlist = orderGoodsList.map(item => {
         return {
           gid: item.id,
@@ -94,7 +138,6 @@ Component({
         }
       });
       var ordlists = JSON.stringify(ordlist);
-      console.log(ordlists);
       request.submitOrder({
           ordlist: ordlists,
           paytype: payType,
@@ -104,7 +147,6 @@ Component({
           dpid: shopId
         })
         .then(res => {
-          console.log(res);
           let that = this;
           if (res.status_code) {
             wx.requestPayment({
@@ -145,5 +187,7 @@ Component({
         });
     }
   },
+  attached() {
+  }
 
 })

@@ -13,6 +13,7 @@ Page({
     shopDistance: '',
     isOutRange: 1,
     hotList: [],
+    address: {},
     iscoupon:true,
     orderGoodsList: [],
     remark:""
@@ -30,12 +31,26 @@ Page({
   },
   onShow: function() {
     this.checkLogin();
+    this.getLoacalAddress();
     // this.getShop();
   },
   cancel:function(){
     this.setData({
       iscoupon: !this.data.iscoupon
     })
+  },
+  getLoacalAddress: function () {
+    api.getStorage({
+      key: 'address'
+    })
+      .then(res => {
+        console.log(res)
+        if (res.data) {
+          this.setData({
+            address: res.data
+          });
+        }
+      });
   },
   authorize: function() {
     //  地理位置授权申请
@@ -213,6 +228,8 @@ Page({
     let goodsPrice = 0;
     let goodsbprice = 0;
     let diffPrice = 0;
+    let sendprice = 0;
+    let discount = 8;
     orderGoodsList.forEach(item => {
       goodsPrice += item.price * item.number;
       goodsbprice += item.bprice;
@@ -222,10 +239,14 @@ Page({
     } else {
       diffPrice = starprice - goodsPrice;
     }
+    let orderTotalPrice = goodsPrice + goodsbprice + sendprice - discount;
     this.setData({
       goodsPrice,
       goodsbprice,
-      diffPrice
+      diffPrice,
+      sendprice,
+      discount,
+      orderTotalPrice
     });
   },
   //页面隐藏式存储订单信息

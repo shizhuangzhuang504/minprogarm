@@ -2,7 +2,7 @@
   <view class="my" wx:if="{{addressList.length}}">
     <view class="label">我的地址</view>
     <view class="item">
-      <image class="icon-radio" src="./../../assets/image/icon-radio-2-checked.png" mode="aspectFill" ></image>
+      <image class="icon-radio" bindtap="choose" src="./../../assets/image/icon-radio-2-checked.png" mode="aspectFill" ></image>
       <view class="row title">{{curAddress.address}}</view>
       <view class="row">
         <text class="tag" wx:if="{{curAddress.com === 1}}">常用</text>

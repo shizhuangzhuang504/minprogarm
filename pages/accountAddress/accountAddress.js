@@ -41,6 +41,9 @@ Page({
         api.navigateBack({
           delta: 1
         });
+        // api.switchTab({
+        //   url: '/pages/index/index'
+        // });
       });
     }
   },

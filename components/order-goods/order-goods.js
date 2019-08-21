@@ -16,8 +16,7 @@ Component({
   },
   data: {
     baseURL: cfg.baseURL,
-    number: 0,
-    foodinfo:{}
+    number: 0
   },
   lifetimes: {
     attached: function() {
@@ -38,6 +37,7 @@ Component({
         price,
         bprice
       } = this.properties.goods.food;
+      console.log(this.properties.goods)
       this.triggerEvent('goodscalc', {
         id,
         cname,
@@ -48,12 +48,12 @@ Component({
       });
     },
     add: function(e) {
-      // if (wx.getStorageSync('isOutRange')) {
-      let index = e.target.dataset.idx
-      console.log(e.target.dataset.idx)
       console.log(e);
+      console.log(this);
+      console.log(this.properties.goods);
+      // if (wx.getStorageSync('isOutRange')) {
       this.setData({
-        number: this.data.number + 1
+        number: this.data.goods.data.number + 1
       });
       // } else {
       //   wx.showToast({
@@ -68,7 +68,7 @@ Component({
         price,
         bprice,
         remark
-      } =e.target.dataset.good;
+      } = e.target.dataset.good;
       this.triggerEvent('goodscalc', {
         id,
         cname,
@@ -84,7 +84,7 @@ Component({
       let foodinfo = this.properties.goods.data[index];
       var data = JSON.stringify(foodinfo);
       wx.navigateTo({
-        url: '/pages/goods-details/goods-details?data='+data,
+        url: '/pages/goods-details/goods-details?data=' + data,
       })
     },
     // 获取自定义组件的dom节点

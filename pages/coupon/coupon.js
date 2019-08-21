@@ -117,8 +117,11 @@ Page({
         })
         .then(res => {
           api.switchTab({
-            url: '/pages/order/order'
+            url: '/pages/index/index'
           });
+          // api.switchTab({
+          //   url: '/pages/order/order'
+          // });
         });
     } else {
       api.setStorage({

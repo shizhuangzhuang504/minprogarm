@@ -41,4 +41,4 @@
     <text class="date">2019年8月16日  —  2019年9月02日</text>
   </view>
 </view>
-<calc-car class="calc-car" goodsPrice="{{goodsPrice}}" diffPrice="{{diffPrice}}"></calc-car>
+<calc-car class="calc-car" address="{{address}}" goodsPrice="{{goodsPrice}}" orderTotalPrice="{{orderTotalPrice}}" sendprice="{{sendprice}}" discount="{{discount}}" goodsbprice="{{goodsbprice}}" diffPrice="{{diffPrice}}"></calc-car>
