@@ -38,6 +38,13 @@ page {
 .list .item .icon-edit {
   right: 30rpx;
 }
+.list .item .select-icon {
+  height: 100%;
+  width: 50rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .list .item .title {
   padding-top: 15rpx;
   padding-bottom: 18rpx;

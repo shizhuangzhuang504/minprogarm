@@ -31,26 +31,33 @@
         <view class="label">订单内容：</view>
         <view class="row" wx:for="{{orderGoodsList}}" wx:key="{{item.id}}">
           <view class="goods-item">
-            <image class="goods-image" src="{{baseURL}}/{{item.img1}}" mode="aspectFill"></image>
-            <view class="name">{{item.cname}}</view>
-            <view class="number">x{{item.number}}</view>
+            <!-- <image class="goods-image" src="{{baseURL}}/{{item.img1}}" mode="aspectFill"></image> -->
+            <view class="name">{{item.cname}}<text class="item-number">x{{item.number}}</text></view>
           </view>
-          <view class="price">￥{{item.price}}</view>
+          <view class="price">￥{{item.price*item.number}}</view>
         </view>
         <view class="row">
           <view>包装费</view>
-          <view>￥{{goodsbprice}}</view>
+          <view class="price">￥{{goodsbprice}}</view>
         </view>
         <view class="row">
           <view>配送费</view>
-          <view>￥{{sendprice}}</view>
+          <view class="price">￥{{sendprice}}</view>
+        </view>
+        <view class="row rows-count">
+          <view>共{{orderGoodsList.length}}件商品 </view>
+          <view class="price">合计 <text>{{sendprice}}</text></view>
         </view>
         <view class="row" bindtap="chooseCoupon">
-          <view>优惠券</view>
+          <view>持劵可优惠</view>
           <view class="discount">
             -￥{{discount}}
             <image class="icon-right-1" src="./../../assets/image/icon-right-1.png" mode="aspectFill"></image>
           </view>
+        </view>
+        <view class="row rows-last">
+          <view>实付</view>
+          <view class="price">￥{{orderTotalPrice}}</view>
         </view>
       </view>
       <view class="pay">
@@ -71,10 +78,10 @@
           <view>储值卡余额:</view>
           <view class="price">￥{{money}}</view>
         </view>
-        <view class="row">
+        <!-- <view class="row">
           <view>本次消费: </view>
           <view class="price">￥{{orderTotalPrice}}</view>
-        </view>
+        </view> -->
       </view>
       <view class="btns">
         <text class="btn active" bindtap="pay">支付</text>

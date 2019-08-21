@@ -41,6 +41,10 @@ Component({
     address: {
       type: Object,
       value: {}
+    },
+    orderGoodsList: {
+      type: Array,
+      value: []
     }
   },
   data: {

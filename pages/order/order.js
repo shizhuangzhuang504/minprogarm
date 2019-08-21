@@ -38,6 +38,7 @@ Page({
     this.checkLogin();
     this.getShop();
     this.getAddress();
+    this.getLoacalAddress();
     this.getCoupon();
     this.getUser();
     this.priceCalc();
@@ -56,6 +57,20 @@ Page({
   },
   onReady:function(){
     
+  },
+  // 获取选择的配送地址
+  getLoacalAddress: function () {
+    api.getStorage({
+      key: 'address'
+    })
+      .then(res => {
+        console.log(res)
+        if (res.data) {
+          this.setData({
+            address: res.data
+          });
+        }
+      });
   },
   checkLogin: function() {
     let Authorization = wx.getStorageSync('Authorization');

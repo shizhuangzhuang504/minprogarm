@@ -100,6 +100,7 @@ Page({
           console.log(res);
           this.setData({
             shopName: res[0].rname,
+            shopDistance: res[0].distance,
             shopDistance: Math.floor(res[0].distance),
             // isOutRange: res[0].service
           });
@@ -202,6 +203,7 @@ Page({
   //生成订单函数
   goodsCalc: function (e) {
     let list = this.data.orderGoodsList;
+    console.log(this.data.orderGoodsList);
     let flag = false;
     let filterIndex = -1;
     list.forEach((item, index) => {

@@ -6,7 +6,8 @@ Page({
   data: {
     addressList: [],
     curIndex: 0,
-    curAddress: null
+    curAddress: null,
+    deleteObj: {}
   },
   onShow: function () {
     this.getAddress();
@@ -22,13 +23,22 @@ Page({
       }
     });
   },
+  chooseItem: function(e) {
+    let { index } = e.currentTarget.dataset;
+    let addressObj = {
+      id: this.data.addressList[index].id,
+      upid: this.data.addressList[index].uid
+    };
+    console.log(e);
+    // deleteObj
+    this.setData({
+      curIndex: index,
+      deleteObj: addressObj
+    });
+  },
   choose: function (e) {
     let { index } = e.currentTarget.dataset;
     let address = app.globalData.address;
-    this.setData({
-      curIndex: index,
-      curAddress: this.data.addressList[index]
-    });
     if (address) {
       api.setStorage({
         key: 'address',
@@ -41,11 +51,35 @@ Page({
         api.navigateBack({
           delta: 1
         });
-        // api.switchTab({
-        //   url: '/pages/index/index'
-        // });
       });
     }
+  },
+  deleteAddress: function(e) {
+    let _this = this; 
+    let { id, upid } = _this.data.deleteObj;
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除？',
+      success(res) {
+        if (res.confirm) {
+          request.delAddress({
+            ..._this.data.deleteObj
+          }).then(res => {
+            if (res.status_code) {
+              api.showToast({
+                title: '删除成功',
+                icon: 'none',
+                duration: 1000
+              }).then(res => {
+                _this.getAddress();
+              });
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   },
   editAddress: function (e) {
     let { index } = e.currentTarget.dataset;

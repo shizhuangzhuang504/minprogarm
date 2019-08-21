@@ -2,7 +2,7 @@
   <view class="my" wx:if="{{addressList.length}}">
     <view class="label">我的地址</view>
     <view class="item">
-      <image class="icon-radio" bindtap="choose" src="./../../assets/image/icon-radio-2-checked.png" mode="aspectFill" ></image>
+      <image class="icon-radio" catchtap="choose" src="./../../assets/image/icon-radio-2-checked.png" mode="aspectFill" ></image>
       <view class="row title">{{curAddress.address}}</view>
       <view class="row">
         <text class="tag" wx:if="{{curAddress.com === 1}}">常用</text>
@@ -14,10 +14,12 @@
       <image class="icon-edit" src="./../../assets/image/icon-edit.png" mode="aspectFill" data-index="{{curIndex}}" bindtap="editAddress" ></image>
     </view>
   </view>
-  <view class="all" wx:if="{{addressList.length}}">
+  <view class="all" wx:if="{{addressList.length}}" >
     <view class="label">所有地址</view>
-    <view class="item" wx:for="{{addressList}}" wx:key="{{item.id}}">
-      <image class="icon-radio" src="./../../assets/image/icon-radio-2{{curIndex === index ? '-checked' : ''}}.png" mode="aspectFill" data-index="{{index}}" bindtap="choose" ></image>
+    <view class="item" wx:for="{{addressList}}" wx:key="{{item.id}}" catchtap="choose">
+      <view class="select-icon" catchtap="chooseItem" data-index="{{index}}">
+        <image class="icon-radio" src="./../../assets/image/icon-radio-2{{curIndex === index ? '-checked' : ''}}.png" mode="aspectFill"></image>
+      </view>
       <view class="row title">{{item.address}}</view>
       <view class="row">
         <text class="tag" wx:if="{{item.com === 1}}">常用</text>
@@ -26,11 +28,14 @@
         <text class="mobile" wx:if="{{item.sex === 1}}">先生</text>
         <text class="mobile" wx:if="{{item.sex === 2}}">女士</text>
       </view>
-      <image class="icon-edit" src="./../../assets/image/icon-edit.png" mode="aspectFill" data-index="{{index}}" bindtap="editAddress" ></image>
+      <image class="icon-edit" src="./../../assets/image/icon-edit.png" mode="aspectFill" data-index="{{index}}" catchtap="editAddress" ></image>
     </view>
   </view>
 </view>
-<navigator class="add" wx:if="{{addressList.length < 5}}" url="../accountEditAddress/accountEditAddress">
+<navigator class="add" wx:if="{{addressList.length < 4}}" url="../accountEditAddress/accountEditAddress">
   <image class="icon-add" src="./../../assets/image/icon-add.png" mode="aspectFill" ></image>
   添加地址
 </navigator>
+<view class="add" catchtap="deleteAddress">
+  删除地址
+</view>

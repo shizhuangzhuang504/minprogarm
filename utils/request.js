@@ -107,7 +107,16 @@ exports.getAddress = () => {
 
 exports.updateAddress = data => {
   return post({
-    path: '/api/wechat/user/address',
+    path: '/api/wechat/user/upadress',
+    data: {
+      ...data
+    }
+  })
+};
+
+exports.delAddress = data => {
+  return post({
+    path: '/api/wechat/user/deldress',
     data: {
       ...data
     }

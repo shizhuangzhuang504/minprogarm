@@ -1,7 +1,7 @@
 .calc-bar{
   width:724rpx;
 }
-.calc-bar  .icon-man {
+.calc-bar .icon-man {
   position: absolute;
   left: 33rpx;
   bottom: 0;
@@ -9,7 +9,7 @@
   height:147rpx;
 }
 .calc-bar .number {
-  position:relative;
+ position:relative;
   border-radius:20rpx;
   height: 119rpx;
   background: #e94215;
@@ -29,12 +29,12 @@
   font-size: 36rpx;
 }
 .calc-bar .number .remark {
-  margin: 23rpx 0 0 11rpx;
+   margin: 23rpx 0 0 11rpx;
   color: #dedede;
   font-size: 26rpx;
 }
 .calc-bar .number .tips {
-  margin:22rpx 0 0 5rpx;
+   margin:22rpx 0 0 5rpx;
   color: #dedede;
   font-size: 26rpx;
 }
@@ -95,7 +95,7 @@
 }
 .confirm .userinfo {
   margin: 4rpx 35rpx 0;
-  border-top: 1rpx solid #eee;
+  /* border-top: 1rpx solid #eee; */
   padding-top: 17rpx;
   padding-bottom: 29rpx;
   color: #000;
@@ -108,6 +108,9 @@
   height: 34rpx;
   font-size: 30rpx;
   line-height: 34rpx;
+}
+.confirm .userinfo .user .name {
+  font-size: 24rpx;
 }
 .confirm .userinfo .tag {
   display: inline-block;
@@ -131,23 +134,30 @@
 }
 .confirm .order,
 .confirm .pay {
-  border-top: 5rpx solid #eee;
+  /* border-top: 5rpx solid #eee; */
   padding: 0 35rpx;
 }
 .confirm .order .label {
   color: #333;
-  font-size: 24rpx;
+  font-size: 30rpx;
   line-height: 66rpx;
+  font-weight: bold;
 }
 .confirm .order .row {
-  line-height: 90rpx;
+  line-height: 80rpx;
+}
+.confirm .order .rows-last {
+  border-bottom: 1rpx solid #eee;
+}
+.confirm .order .rows-count {
+  border-top: 1rpx solid #eee;
 }
 .confirm .order .row:last-of-type {
   border-top: 1rpx solid #eee;
 }
 .confirm .order .goods-item {
   width: 500rpx;
-  height: 125rpx;
+  /* height: 125rpx; */
 }
 .confirm .order .goods-image {
   float: left;
@@ -158,6 +168,9 @@
 .confirm .order .name {
   font-size: 30rpx;
   line-height: 50rpx;
+}
+.confirm .order .name .item-number {
+  margin-left: 30rpx;
 }
 .confirm .order .number {
   margin-top: 38rpx;
@@ -178,7 +191,8 @@
 .confirm .pay .label {
   padding-top: 31rpx;
   color: #333;
-  font-size: 24rpx;
+  font-size: 30rpx;
+  font-weight: bold;
 }
 .confirm .pay .type .radio {
   display: inline-block;
@@ -206,7 +220,7 @@
   margin-top: 30rpx;
 }
 .confirm .pay .row:last-of-type {
-  border-top: 1rpx solid #eee;
+  /* border-top: 1rpx solid #eee; */
   padding-top: 30rpx;
 }
 .confirm .pay .price {

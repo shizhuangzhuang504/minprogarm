@@ -20,4 +20,4 @@
     </view>
   </scroll-view>
 </view>
-<calc-car class="calc-car" goodsPrice="{{goodsPrice}}" diffPrice="{{diffPrice}}"></calc-car>
+<calc-car class="calc-car" address="{{address}}" goodsPrice="{{goodsPrice}}" orderTotalPrice="{{orderTotalPrice}}" sendprice="{{sendprice}}" discount="{{discount}}" goodsbprice="{{goodsbprice}}" diffPrice="{{diffPrice}}" orderGoodsList="{{orderGoodsList}}"></calc-car>
