@@ -233,9 +233,9 @@
 .confirm .btns .btn {
   display: inline-block;
   margin: 0 19rpx;
-  border: 1rpx solid #aaa;
+  border: 2rpx solid #aaa;
   border-radius: 10rpx;
-  width: 248rpx;
+  width: 250rpx;
   height: 52rpx;
   color: #333;
   font-size: 30rpx;

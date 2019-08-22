@@ -3,10 +3,26 @@ const request = require('./utils/request');
 
 App({
   globalData: {
-    userInfo: {
-    }
+    userInfo: {},
+    shopInfo: {}
   },
   onLaunch: function () {
+    this.getShopList();
+  },
+  getShopList: function () {
+    api.getLocation()
+    .then(res => {
+      let {latitude, longitude} = res;
+      return request.getShopList({
+        latitude,
+        longitude
+      });
+    })
+    .then(res => {
+      if (res.length) {
+       this.globalData.shopInfo = res[0];
+      }
+    });
   },
   userLogin: function (getUserInfo) {
     let {userInfo, rawData, signature} = getUserInfo.detail;

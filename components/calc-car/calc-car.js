@@ -50,15 +50,34 @@ Component({
   data: {
     isshow: false,
     isConfirm: false,
+    payType: 0
+  },
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show: () => {
+      console.log(app.globalData);
+    },
+    hide: () => {}
   },
   methods: {
     //toggle支付页面
     toggleConfirm: function() {
-      this.setData({
-        isConfirm: !this.data.isConfirm
-      });
-      if (this.data.isConfirm) {
-        // this.totalPriceCalc();
+      if (this.data.orderGoodsList.length > 0) {
+        this.setData({
+          isConfirm: !this.data.isConfirm
+        });
+        if (this.data.isConfirm) {
+          wx.hideTabBar({})
+        } else {
+          wx.showTabBar({})
+        }
+      } else {
+        api.showToast({
+          title: '请先选择商品！',
+          icon: 'none',
+          duration: 2000
+        });
+        return;
       }
     },
     // 订单结算金额计算
@@ -146,9 +165,9 @@ Component({
           ordlist: ordlists,
           paytype: payType,
           money: orderTotalPrice,
-          voucid: couponId,
+          voucid: 2,
           addid: address.id,
-          dpid: shopId
+          dpid: app.globalData.shopInfo.id
         })
         .then(res => {
           let that = this;
@@ -168,6 +187,7 @@ Component({
                 that.setData({
                   isConfirm: !that.data.isConfirm
                 });
+                wx.showTabBar({})
                 wx.navigateTo({
                   url: "/pages/accountOrder/accountOrder"
                 })

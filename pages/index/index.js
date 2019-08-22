@@ -15,8 +15,12 @@ Page({
     hotList: [],
     address: {},
     iscoupon:true,
+    localSendprice: 0, // 配送费
     orderGoodsList: [],
     remark:""
+  },
+  onTabItemTap(item) {
+    app.globalData.isConfirm = false;
   },
   onLoad: function(option) {
     this.authorize();
@@ -50,7 +54,22 @@ Page({
             address: res.data
           });
         }
+      })
+      .catch(err => {
+        this.getAddress();
+        console.log(err,'cccc');
       });
+  },
+  getAddress: function () {
+    request.getAddress()
+    .then(res => {
+      if (res.length) {
+        let arr = res.find((element =>element.com == '1'));
+        this.setData({
+          address: arr,
+        });
+      }
+    });
   },
   authorize: function() {
     //  地理位置授权申请
@@ -97,8 +116,8 @@ Page({
       })
       .then(res => {
         if (res.length) {
-          console.log(res);
           this.setData({
+            localSendprice: res[0].sendprice,
             shopName: res[0].rname,
             shopDistance: res[0].distance,
             shopDistance: Math.floor(res[0].distance),
@@ -203,7 +222,6 @@ Page({
   //生成订单函数
   goodsCalc: function (e) {
     let list = this.data.orderGoodsList;
-    console.log(this.data.orderGoodsList);
     let flag = false;
     let filterIndex = -1;
     list.forEach((item, index) => {
@@ -230,7 +248,6 @@ Page({
     let goodsPrice = 0;
     let goodsbprice = 0;
     let diffPrice = 0;
-    let sendprice = 0;
     let discount = 8;
     orderGoodsList.forEach(item => {
       goodsPrice += item.price * item.number;
@@ -242,6 +259,12 @@ Page({
       diffPrice = starprice - goodsPrice;
     }
     let orderTotalPrice = goodsPrice + goodsbprice + sendprice - discount;
+    let sendprice = 0;
+    if (+goodsPrice> 30 || +goodsPrice === 0) {
+      sendprice =  0;
+    } else {
+      sendprice =  this.data.localSendprice;
+    }
     this.setData({
       goodsPrice,
       goodsbprice,

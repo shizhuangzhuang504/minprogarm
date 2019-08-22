@@ -5,9 +5,10 @@ const app = getApp();
 Page({
   data: {
     addressList: [],
-    curIndex: 0,
+    curIndex:null,
     curAddress: null,
-    deleteObj: {}
+    deleteObj: {},
+    isSelect: false,
   },
   onShow: function () {
     this.getAddress();
@@ -16,9 +17,10 @@ Page({
     request.getAddress()
     .then(res => {
       if (res.length) {
+        let arr = res.find((element =>element.com == '1'));
         this.setData({
           addressList: res,
-          curAddress: res[0]
+          curAddress: arr
         });
       }
     });
@@ -26,15 +28,22 @@ Page({
   chooseItem: function(e) {
     let { index } = e.currentTarget.dataset;
     let addressObj = {
-      id: this.data.addressList[index].id,
-      upid: this.data.addressList[index].uid
+      id: this.data.addressList[index].uid,
+      upid: this.data.addressList[index].id
     };
-    console.log(e);
-    // deleteObj
-    this.setData({
-      curIndex: index,
-      deleteObj: addressObj
-    });
+    if (this.data.deleteObj.id === addressObj.id) {
+      this.setData({
+        curIndex: null,
+        deleteObj: {},
+        isSelect: false
+      });
+    } else {
+      this.setData({
+        curIndex: index,
+        deleteObj: addressObj,
+        isSelect: true
+      });
+    }
   },
   choose: function (e) {
     let { index } = e.currentTarget.dataset;
@@ -71,22 +80,29 @@ Page({
                 icon: 'none',
                 duration: 1000
               }).then(res => {
+                _this.setData({
+                  isSelect: false,
+                  curIndex: null
+                })
                 _this.getAddress();
               });
             }
           });
-        } else if (res.cancel) {
-          console.log('用户点击取消')
         }
       }
     })
+  },
+  addbtn:function(e) {
+    api.navigateTo({
+      url: '/pages/accountEditAddress/accountEditAddress?controType=1'
+    });
   },
   editAddress: function (e) {
     let { index } = e.currentTarget.dataset;
     let addressObj = this.data.addressList[index];
     let { realname, sex, mobile, address, door, biao, com, id, uid  } = addressObj;
     api.navigateTo({
-      url: `/pages/accountEditAddress/accountEditAddress?realname=${realname}&sex=${sex}&mobile=${mobile}&address=${address}&door=${door}&biao=${biao}&com=${com}&id=${id}&uid=${uid}`
+      url: `/pages/accountEditAddress/accountEditAddress?realname=${realname}&sex=${sex}&mobile=${mobile}&address=${address}&door=${door}&biao=${biao}&com=${com}&id=${id}&uid=${uid}&controType=2`
     });
   }
 })

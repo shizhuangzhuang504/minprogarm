@@ -30,6 +30,9 @@ Page({
     listViewScrollTop: 0,
     foodAreaHeight: [0],
   },
+  onTabItemTap(item) {
+    app.globalData.isConfirm = false;
+  },
   onLoad: function() {
     this.getSwiper();
     this.getMenuList();
@@ -37,7 +40,6 @@ Page({
   onShow: function() {
     this.checkLogin();
     this.getShop();
-    this.getAddress();
     this.getLoacalAddress();
     this.getCoupon();
     this.getUser();
@@ -70,7 +72,11 @@ Page({
             address: res.data
           });
         }
-      });
+      })
+      .catch(err => {
+        this.getAddress();
+        console.log(err,'cccc');
+      });;
   },
   checkLogin: function() {
     let Authorization = wx.getStorageSync('Authorization');
@@ -208,19 +214,16 @@ Page({
         }
       });
   },
-  getAddress: function() {
-    if (this.data.isConfirm) {
-      api.getStorage({
-          key: 'address'
-        })
-        .then(res => {
-          if (res.data) {
-            this.setData({
-              address: res.data
-            });
-          }
+  getAddress: function () {
+    request.getAddress()
+    .then(res => {
+      if (res.length) {
+        let arr = res.find((element =>element.com == '1'));
+        this.setData({
+          address: arr,
         });
-    }
+      }
+    });
   },
   getCoupon: function() {
     if (this.data.isConfirm) {

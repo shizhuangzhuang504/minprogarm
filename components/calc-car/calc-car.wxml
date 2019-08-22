@@ -84,8 +84,8 @@
         </view> -->
       </view>
       <view class="btns">
-        <text class="btn active" bindtap="pay">支付</text>
-        <text class="btn" bindtap="toggleConfirm">返回</text>
+        <view class="btn active" bindtap="pay">支付</view>
+        <view class="btn" bindtap="toggleConfirm">返回</view>
       </view>
     </view>
   </view>

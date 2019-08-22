@@ -32,6 +32,13 @@ page {
   top: 50%;
   transform: translateY(-50%);
 }
+.list .item .edit-btn {
+  position: absolute;
+  height:100%;
+  width: 60rpx;
+  right: 0rpx;
+  top:0;
+}
 .list .item .icon-radio {
   left: 3rpx;
 }

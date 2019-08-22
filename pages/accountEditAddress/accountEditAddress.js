@@ -11,12 +11,13 @@ Page({
     tag: '',
     isCommon: 0,
     id: '',
-    uid: ''
+    uid: '',
+    controType:1
   },
   onLoad: function (opt) {
     console.log(opt)
     if (Object.keys(opt).length !== 0) {
-      let { realname, sex, mobile, address, door, biao, com, id, uid } = opt;
+      let { realname, sex, mobile, address, door, biao, com, id, uid, controType } = opt;
       this.setData({
         realname,
         sex,
@@ -26,7 +27,8 @@ Page({
         tag: biao,
         isCommon: com,
         id,
-        uid
+        uid,
+        controType
       });
       return;
     }
@@ -95,21 +97,39 @@ Page({
       });
       return;
     } else {
-      request.updateAddress({
-        ...e.detail.value
-      }).then(res => {
-        if (res.status_code) {
-          api.showToast({
-            title: '保存成功',
-            icon: 'none',
-            duration: 1000
-          }).then(res => {
-            api.navigateBack({
-              delta: 1
+      if (+this.data.controType === 1) {
+        request.addAddress({
+          ...e.detail.value
+        }).then(res => {
+          if (res.status_code) {
+            api.showToast({
+              title: '保存成功',
+              icon: 'none',
+              duration: 1000
+            }).then(res => {
+              api.navigateBack({
+                delta: 1
+              });
             });
-          });
-        }
-      });
+          }
+        });
+      } else {
+        request.updateAddress({
+          ...e.detail.value
+        }).then(res => {
+          if (res.status_code) {
+            api.showToast({
+              title: '编辑成功',
+              icon: 'none',
+              duration: 1000
+            }).then(res => {
+              api.navigateBack({
+                delta: 1
+              });
+            });
+          }
+        });
+      }
     }
   }
 })
