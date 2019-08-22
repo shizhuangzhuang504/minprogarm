@@ -1,0 +1,86 @@
+.goods-details>image{
+  width:100%;
+  height:600rpx;
+  display: block;
+}
+.food-info{
+  padding: 42rpx 52rpx;
+  font-family: AlibabaPuHuiTiB;
+  background:#fff;
+}
+.food-name{
+	font-size: 38rpx;
+	font-weight: 600;
+	color: #000;
+  margin-bottom:26rpx;
+}
+.food-label{
+  font-size: 24rpx;
+	color: #666;
+  font-weight: 600;
+  margin:17rpx 0 15rpx; 
+}
+.food-desc{
+  font-size: 24rpx;
+	color: #666;
+  line-height:40rpx;
+}
+.food-info textarea{
+  height:96rpx;
+  border: solid 1px #e94215;
+  border-radius: 10px;
+  font-size: 24rpx;
+  color:#666;
+  padding:15rpx;
+  
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 41rpx 0;
+}
+.row .number .big {
+  display: inline-block;
+}
+.price {
+  color: #e94215;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.number {
+  padding-right: 20rpx;
+}
+.icon-number-reduce,
+.icon-number-add,
+.number text {
+  vertical-align: top;
+}
+.number text {
+  display: inline-block;
+  width: 58rpx;
+  height: 40rpx;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+.btn-wrap{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.btn{
+  width:153rpx;
+  height:62rpx;
+  background-color: #c7c7c7;
+	border-radius: 10px;
+  text-align:center;
+  color:#333;
+  font-size: 34rpx;
+  line-height:62rpx;
+}
+.btn.active{
+  background-color: #e94215;
+  color:#fff;
+}

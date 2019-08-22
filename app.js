@@ -4,7 +4,8 @@ const request = require('./utils/request');
 App({
   globalData: {
     userInfo: {},
-    shopInfo: {}
+    shopInfo: {},
+    goodsPrice: ''
   },
   onLaunch: function () {
     this.getShopList();

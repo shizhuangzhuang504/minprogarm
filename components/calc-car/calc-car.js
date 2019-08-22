@@ -54,7 +54,10 @@ Component({
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
-    show: () => {
+    show: function() {
+      this.setData({
+        goodsPrice:app.globalData.goodsPrice
+      })
       console.log(app.globalData);
     },
     hide: () => {}

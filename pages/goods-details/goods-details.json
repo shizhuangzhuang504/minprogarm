@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "detail-goods": "/components/detail-goods/detail-goods",
+    "calc-car": "/components/calc-car/calc-car"
+  }
 }
