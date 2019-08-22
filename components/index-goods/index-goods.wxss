@@ -25,24 +25,23 @@
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
-  margin-top: 26rpx;
+  margin-top: 16rpx;
 }
 .index-goods .price {
   padding-left: 12rpx;
   color: #e94215;
   font-size: 24rpx;
-  margin-top:10rpx;
+  margin-top:15rpx;
 }
 .index-goods .number {
   display: flex;
-  align-items: flex-start;
   padding-right: 20rpx;
   margin-top:10rpx;
 }
 .index-goods .icon-number-reduce,
 .index-goods .icon-number-add,
 .index-goods .number text {
-  vertical-align: bottom;
+  vertical-align: text-top;
 }
 .index-goods .number text {
   display: inline-block;

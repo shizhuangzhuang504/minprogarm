@@ -77,8 +77,8 @@ Component({
       });
     },
     gogoodsdetail: function(e) {
-      let index = e.target.dataset.idx
-      let foodinfo = this.properties.goods.data[0];
+      let index = e.target.dataset.index;
+      let foodinfo = this.properties.goods.data[index];
       let data = JSON.stringify(foodinfo);
       wx.navigateTo({
         url: '/pages/goods-details/goods-details?data=' + data,

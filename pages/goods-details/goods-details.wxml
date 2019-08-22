@@ -6,7 +6,7 @@
       <view class="row">
         <view class="price">￥{{price}}</view>
         <view class="number" hidden="{{flase}}">
-          <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!number}}" bindtap="reduce"></image>
+          <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" data-index="{{index}}" mode="aspectFill" hidden="{{!number}}" bindtap="reduce"></image>
           <text wx:if="{{number}}">{{number}}</text>
           <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" bindtap="add"></image>
         </view>
