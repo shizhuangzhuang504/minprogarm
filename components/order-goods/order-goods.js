@@ -26,35 +26,31 @@ Component({
     }
   },
   methods: {
-    reduce: function() {
-      this.setData({
-        number: this.data.number - 1
-      });
+    reduce: function(e) {
+      let index = e.target.dataset.index;
       let {
         id,
         cname,
         img1,
         price,
-        bprice
-      } = this.properties.goods.food;
-      console.log(this.properties.goods)
+        bprice,
+        remark
+      } = e.target.dataset.good;
       this.triggerEvent('goodscalc', {
         id,
+        type: 'reduce',
+        index,
         cname,
         img1,
         price,
         bprice,
-        number: this.data.number
+        remark: ""
       });
     },
     add: function(e) {
-      console.log(e);
-      console.log(this);
-      console.log(this.properties.goods);
+
       // if (wx.getStorageSync('isOutRange')) {
-      this.setData({
-        number: this.data.goods.data.number + 1
-      });
+      let index = e.target.dataset.index
       // } else {
       //   wx.showToast({
       //     icon: "none",
@@ -71,32 +67,21 @@ Component({
       } = e.target.dataset.good;
       this.triggerEvent('goodscalc', {
         id,
+        type: 'add',
+        index,
         cname,
         img1,
         price,
         bprice,
-        number: this.data.number,
         remark: ""
       });
     },
     gogoodsdetail: function(e) {
       let index = e.target.dataset.idx
-      let foodinfo = this.properties.goods.data[index];
-      var data = JSON.stringify(foodinfo);
+      let foodinfo = this.properties.goods.data[0];
+      let data = JSON.stringify(foodinfo);
       wx.navigateTo({
         url: '/pages/goods-details/goods-details?data=' + data,
-      })
-    },
-    // 获取自定义组件的dom节点
-    queryMultipleNodes() {
-      const query = wx.createSelectorQuery().in(this);
-      query.select('.head').boundingClientRect(function(res) {
-        console.log(res);
-        res.top // 这个组件内 #the-id 节点的上边界坐标 }).exec() }})
-      })
-      query.select('.order-goods').boundingClientRect(function(res) {
-        console.log(res);
-        res.top // 这个组件内 #the-id 节点的上边界坐标 }).exec() }})
       })
     },
   },

@@ -11,7 +11,7 @@
   <view class="shop-name">{{shopName ? shopName : ''}}</view>
   <view class="distance">
     <image src="/assets/image/icon-location-1.png"></image>
-    <text>{{shopDistance ? '附近门店距您' + shopDistance + '米' : ''}}</text>
+    <text>{{shopDistance ? '附近门店距您' + shopDistance + 'km' : ''}}</text>
   </view>
   <view class="order-btn {{isOutRange === 0? 'disabled' : 'usable'}}" bindtap="order">
     <view>{{isOutRange === 0 ? '超出服务范围' : '马上点餐'}}</view>

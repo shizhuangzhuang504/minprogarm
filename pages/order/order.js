@@ -55,14 +55,14 @@ Page({
       })
 
   },
-  onReady:function(){
-    
+  onReady: function() {
+
   },
   // 获取选择的配送地址
-  getLoacalAddress: function () {
+  getLoacalAddress: function() {
     api.getStorage({
-      key: 'address'
-    })
+        key: 'address'
+      })
       .then(res => {
         console.log(res)
         if (res.data) {
@@ -261,25 +261,36 @@ Page({
         });
       });
   },
+  //生成订单和数量显示
   goodsCalc: function(e) {
     let list = this.data.orderGoodsList;
-    // let flag = false;
-    // let filterIndex = -1;
-    // list.forEach((item, index) => {
-    //   if (item.id === e.detail.id) {
-    //     filterIndex = index;
-    //     flag = true;
-    //   }
-    // });
-    // if (flag && filterIndex > -1) {
-    //   console.log(list);
-    //   console.log(e.detail);
-    //   list[filterIndex] = e.detail;
-    // } else {
-    list.push(e.detail);
-    // }
+    let goodsList = this.data.goodsList
+    let outerIndx = e.target.dataset.outerindex
+    let type = e.detail.type
+    let indexIndex = e.detail.index
+    let detail = e.detail
+    detail.allIndex = outerIndx + '' + indexIndex
+    let filItem = list.filter(x => x.allIndex === detail.allIndex)
+    if (filItem.length > 0) {
+      if (type === 'add') {
+        if (goodsList[outerIndx].data[indexIndex].number) {
+          goodsList[outerIndx].data[indexIndex].number++
+        } else {
+          goodsList[outerIndx].data[indexIndex].number = 1
+        }
+        filItem[0].number++
+      } else if (type === 'reduce') {
+        goodsList[outerIndx].data[indexIndex].number--
+        filItem[0].number--
+      }
+    } else {
+      goodsList[outerIndx].data[indexIndex].number = 1
+      detail.number = 1
+      list.push(detail)
+    }
     this.setData({
-      orderGoodsList: list
+      orderGoodsList: list,
+      goodsList: goodsList
     });
     this.priceCalc();
   },
