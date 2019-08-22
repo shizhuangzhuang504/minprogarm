@@ -4,9 +4,13 @@
   <view class="row">
     <view class="price">￥{{goods.price}}</view>
     <view class="number" hidden="{{flase}}">
-      <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!number}}" bindtap="reduce"></image>
+      <view class="big">
+        <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!number}}" bindtap="reduce"></image>
+      </view>
       <text wx:if="{{number}}">{{number}}</text>
-      <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" bindtap="add"></image>
+      <view class="big">
+        <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" bindtap="add"></image>
+      </view>
     </view>
   </view>
   <view class="details-wrap" hidden="{{!isConfirm}}">
@@ -23,9 +27,13 @@
         <view class="row">
           <view class="price">￥{{goods.price}}</view>
           <view class="number" hidden="{{flase}}">
-            <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!number}}" bindtap="reduce"></image>
+            <view class="big">
+              <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!number}}" bindtap="reduce"></image>
+            </view>
             <text wx:if="{{number}}">{{number}}</text>
-            <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" bindtap="add"></image>
+            <view class="big">
+              <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" bindtap="add"></image>
+            </view>
           </view>
         </view>
         <view class="btn-wrap">

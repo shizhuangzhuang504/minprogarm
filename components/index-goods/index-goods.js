@@ -75,6 +75,7 @@ Component({
         remark:""
       });
     },
+    //跳转商品详情
     gogoodsdetail: function() {
       console.log(this.properties.goods)
       var data = JSON.stringify(this.properties.goods);
@@ -82,15 +83,5 @@ Component({
         url: '/pages/goods-details/goods-details?data='+data,
       })
     },
-    //获取备注内容
-    remarkinput: function(e) {
-      this.setData({
-        remark: e.detail.value
-      })
-    },
-    //取消按钮事件
-    cancelgoods: function() {
-      this.gogoodsdetail();
-    }
   },
 })

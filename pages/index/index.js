@@ -120,7 +120,7 @@ Page({
             localSendprice: res[0].sendprice,
             shopName: res[0].rname,
             shopDistance: res[0].distance,
-            shopDistance: Math.floor(res[0].distance),
+            shopDistance: Math.floor(res[0].distance/1000),
             // isOutRange: res[0].service
           });
           wx.setStorageSync("isOutRange", res[0].service);
@@ -274,7 +274,7 @@ Page({
       orderTotalPrice
     });
   },
-  //页面隐藏式存储订单信息
+  //页面隐藏后存储订单信息
   onHide:function(){
     wx.setStorageSync("orderGoodsList", this.data.orderGoodsList);
   }

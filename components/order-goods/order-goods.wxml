@@ -3,16 +3,16 @@
     {{goods.title}}
   </view>
 <block wx:for="{{goods.data}}" wx:for-item="food" wx:key="food.index">
-<view class="order-goods" bindtap="gogoodsdetail">
-  <image class="goods-image" src="{{baseURL}}/{{food.img1}}" data-idx = "{{idx}}" mode="aspectFill" lazy-load="{{true}}"></image>
+<view class="order-goods">
+  <image class="goods-image" src="{{baseURL}}/{{food.img1}}" data-idx = "{{idx}}" mode="aspectFill" lazy-load="{{true}}" bindtap="gogoodsdetail"></image>
   <view class="name">{{food.cname}}</view>
   <view class="desc">描述:{{food.pinfo?food.pinfo:"商品描述描述商品描述描述商品描述描述商品描述描述商品描述描述"}}</view>
   <view class="row">
     <view class="price">￥{{food.price}}</view>
     <view class="number">
-      <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!number}}" catchtap="reduce"></image>
-      <text wx:if="{{number}}">{{number}}</text>
-      <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" data-good="{{food}}" catchtap="add"></image>
+      <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!food.number}}" catchtap="reduce" data-index="{{index}}" data-good="{{food}}"></image>
+      <text wx:if="{{food.number}}">{{food.number}}</text>
+      <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" data-good="{{food}}" catchtap="add" data-index="{{index}}" data-good="{{food}}"></image>
     </view>
   </view>
 </view>
