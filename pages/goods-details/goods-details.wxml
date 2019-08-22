@@ -1,24 +1,6 @@
 <view class="container">
-  <view class="goods-details">
-    <image src="{{baseURL}}/{{imgsrc}}" mode="widthFix"  bindtap="bindImgPreView"></image>
-    <view class="food-info">
-      <view class="food-name">{{cname}}</view>
-      <view class="row">
-        <view class="price">￥{{price}}</view>
-        <view class="number" hidden="{{flase}}">
-          <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" data-index="{{index}}" mode="aspectFill" hidden="{{!number}}" bindtap="reduce"></image>
-          <text wx:if="{{number}}">{{number}}</text>
-          <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" bindtap="add"></image>
-        </view>
-      </view>
-      <view class="food-label">产品描述：</view>
-      <view class="food-desc">{{info?info:"这是产品描述这是产品描述这是产品描述这是产品描述这是产品描述"}}</view>
-      <view class="food-label">备注：</view>
-      <view>
-        <textarea type="text" bindinput="bindblur"></textarea>
-      </view>
-      <view class="btn-wrap">
-      </view>
-    </view>
+  <view class="list">
+    <detail-goods class="goods-item" wx:for="{{goods}}" wx:key="{{item.id}}" goods="{{item}}" bindgoodscalc="goodsCalc"></detail-goods>
   </view>
+  <calc-car class="calc-car" address="{{address}}" goodsPrice="{{goodsPrice}}" orderTotalPrice="{{orderTotalPrice}}" sendprice="{{sendprice}}" discount="{{discount}}" goodsbprice="{{goodsbprice}}" diffPrice="{{diffPrice}}" orderGoodsList="{{orderGoodsList}}"></calc-car>
 </view>

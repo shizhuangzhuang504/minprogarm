@@ -19,9 +19,6 @@ Page({
     orderGoodsList: [],
     remark:""
   },
-  onTabItemTap(item) {
-    app.globalData.isConfirm = false;
-  },
   onLoad: function(option) {
     this.authorize();
     this.getSwiper();
@@ -265,6 +262,7 @@ Page({
     } else {
       sendprice =  this.data.localSendprice;
     }
+    app.globalData.goodsPrice = goodsPrice;
     this.setData({
       goodsPrice,
       goodsbprice,
