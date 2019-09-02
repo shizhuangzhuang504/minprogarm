@@ -20,7 +20,6 @@ Page({
     remark:""
   },
   onLoad: function(option) {
-    this.authorize();
     this.getSwiper();
     this.getHotList();
     this.getShopList();
@@ -68,14 +67,9 @@ Page({
       }
     });
   },
-  authorize: function() {
-    //  地理位置授权申请
-    api.authorize({
-      scope: 'scope.userLocation'
-    });
-  },
   checkLogin: function() {
     let Authorization = wx.getStorageSync('Authorization');
+    console.log(Authorization);
     this.setData({
       loginStatus: Authorization ? true : false
     });
