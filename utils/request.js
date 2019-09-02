@@ -169,6 +169,22 @@ exports.getRebate = () => {
   })
 };
 
+/** 获取优惠券列表 **/
+exports.getCouponList = () => {
+  return get({
+    path: '/api/wechat/user/coupon_list',
+    data: { }
+  })
+};
+
+/** 获取免费券 **/
+exports.getFreeList = () => {
+  return get({
+    path: '/api/wechat/user/free_coupon',
+    data: { }
+  })
+};
+
 exports.submitOrder = data => {
   return post({
     path: '/api/wechat/user/suborder',

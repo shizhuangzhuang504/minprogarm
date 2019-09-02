@@ -49,14 +49,17 @@ Component({
   },
   data: {
     isshow: false,
+    isSelect: false,
     isConfirm: false,
     payType: 0
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
     show: function() {
+      console.log(1111,'ceeee');
       this.setData({
-        goodsPrice:app.globalData.goodsPrice
+        goodsPrice:app.globalData.goodsPrice,
+        isSelect: app.globalData.isSelect
       })
       console.log(app.globalData);
     },

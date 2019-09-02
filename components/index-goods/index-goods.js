@@ -1,4 +1,5 @@
 const cfg = require('./../../config/index');
+const app = getApp();
 
 Component({
   options: {
@@ -30,6 +31,9 @@ Component({
       this.setData({
         number: this.data.number - 1
       });
+      if (this.data.number <= 0) {
+        this.triggerEvent('myevent', false)
+      }
       let {
         id,
         cname,
@@ -51,6 +55,9 @@ Component({
       this.setData({
         number: this.data.number + 1
       });
+      if (this.data.number > 0) {
+        this.triggerEvent('myevent', true)
+      }
       // } else {
       //   wx.showToast({
       //     icon: "none",
@@ -77,7 +84,6 @@ Component({
     },
     //跳转商品详情
     gogoodsdetail: function() {
-      console.log(this.properties.goods)
       var data = JSON.stringify(this.properties.goods);
       wx.navigateTo({
         url: '/pages/goods-details/goods-details?data='+data,

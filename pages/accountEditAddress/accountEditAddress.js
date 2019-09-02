@@ -40,6 +40,7 @@ Page({
     });
   },
   chooseLocation: function () {
+    console.log('揍你');
     api.chooseLocation()
     .then(res => {
       this.setData({

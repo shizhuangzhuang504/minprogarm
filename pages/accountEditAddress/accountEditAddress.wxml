@@ -20,19 +20,21 @@
     </view>
     <view class="row">
       <text class="label">地址</text>
-      <textarea name="address" placeholder="请选择您的地址" value="{{address}}" auto-height disabled value="{{address}}" bindtap="chooseLocation"></textarea>
+      <textarea name="address" placeholder="请选择您的地址" value="{{address}}" auto-height disabled value="{{address}}" catchtap="chooseLocation"></textarea>
       <image class="icon-location" src="./../../assets/image/icon-location.png" mode="aspectFill" bindtap="chooseLocation"></image>
     </view>
     <view class="row">
       <text class="label">门牌号</text>
       <input type="text" name="door" placeholder="例：1号楼203室" value="{{door}}" />
     </view>
-    <view class="row">
+    <view class="row tag-content">
       <text class="label">标签</text>
-      <view class="tag {{tag == 1 ? 'active' : ''}}" data-tag="1" bindtap="chooseTag">公司</view>
-      <view class="tag {{tag == 2 ? 'active' : ''}}" data-tag="2" bindtap="chooseTag">家</view>
-      <view class="tag {{tag == 3 ? 'active' : ''}}" data-tag="3" bindtap="chooseTag">学校</view>
-      <input class="hidden" type="text" name="biao" value="{{tag}}" />
+      <view class="tag-content">
+        <view class="tag {{tag == 1 ? 'active' : ''}}" data-tag="1" bindtap="chooseTag">公司</view>
+        <view class="tag {{tag == 2 ? 'active' : ''}}" data-tag="2" bindtap="chooseTag">家</view>
+        <view class="tag {{tag == 3 ? 'active' : ''}}" data-tag="3" bindtap="chooseTag">学校</view>
+      </view>
+        <input class="hidden" type="text" name="biao" value="{{tag}}" />
     </view>
     <view class="common" bindtap="chooseCommon">
       <image class="{{isCommon == 1 ? 'icon-checkbox-checked' : 'icon-checkbox'}}" src="./../../assets/image/{{isCommon == 1 ? 'icon-checkbox-checked' : 'icon-checkbox'}}.png" mode="widthFix" bindtap=""></image>

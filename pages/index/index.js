@@ -15,6 +15,7 @@ Page({
     hotList: [],
     address: {},
     iscoupon:true,
+    isSelect: false,
     localSendprice: 0, // 配送费
     orderGoodsList: [],
     remark:""
@@ -28,6 +29,11 @@ Page({
         iscoupon: !this.data.iscoupon
       })
     }
+  },
+  onMyevent:function(e){
+    this.setData({
+      isSelect: e.detail
+    })
   },
   onShow: function() {
     this.checkLogin();
@@ -53,7 +59,6 @@ Page({
       })
       .catch(err => {
         this.getAddress();
-        console.log(err,'cccc');
       });
   },
   getAddress: function () {
@@ -69,7 +74,6 @@ Page({
   },
   checkLogin: function() {
     let Authorization = wx.getStorageSync('Authorization');
-    console.log(Authorization);
     this.setData({
       loginStatus: Authorization ? true : false
     });
