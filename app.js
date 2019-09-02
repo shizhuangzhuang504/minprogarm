@@ -9,6 +9,7 @@ App({
   },
   onLaunch: function () {
     this.getShopList();
+    this.getAuthorize();
   },
   getShopList: function () {
     api.getLocation()
@@ -24,6 +25,12 @@ App({
        this.globalData.shopInfo = res[0];
       }
     });
+  },
+  getAuthorize: function() {
+    //  地理位置授权申请
+    // api.authorize({
+    //   scope: 'scope.userLocation'
+    // });
   },
   userLogin: function (getUserInfo) {
     let {userInfo, rawData, signature} = getUserInfo.detail;

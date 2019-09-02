@@ -31,7 +31,7 @@ Page({
       id: this.data.addressList[index].uid,
       upid: this.data.addressList[index].id
     };
-    if (this.data.index === index) {
+    if (this.data.deleteObj.id === addressObj.id) {
       this.setData({
         curIndex: null,
         deleteObj: {},
