@@ -48,7 +48,7 @@
       <image class="coupon-bg" src='/assets/image/coupon_bg.png'></image>
       <view class='coupon-list'>
         <view class='coupon-list__item' wx:for="{{freeConponList}}" wx:for-item="item" wx:for-index='index' wx:key='index'>
-          <view class='coupon-tag' style='background:url("/assets/image/coupon_tag.png") no-repeat;background-size:100%;'>
+          <view class='coupon-tag'>
             <view class='coupon-discount'>{{item.discount || '8.5折'}}</view>
             <view class='coupon-name'>{{item.variety_name}}</view>
             <view class='coupon-time'>{{item.start_time}}-{{item.end_time}}</view>
