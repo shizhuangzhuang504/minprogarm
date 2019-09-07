@@ -59,12 +59,7 @@ Page({
     });
   },
   saveAddress: function (e) {
-<<<<<<< HEAD
-    console.log(e);
-    let { realname, sex, mobile, address, door, biao, com, tag } = e.detail.value;
-=======
     let { realname, sex, mobile, address, door, tag, com  } = e.detail.value;
->>>>>>> 20190909_zb_feat
     if (realname === '') {
       api.showToast({
         title: '联系人不能为空',

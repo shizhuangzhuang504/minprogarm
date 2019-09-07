@@ -112,11 +112,7 @@ exports.getMenuGoods = data => {
 
 exports.addAddress = data => {
   return post({
-<<<<<<< HEAD
-    path: '/api/wechat/user/add_address',
-=======
     path: "/api/wechat/user/add_address",
->>>>>>> 20190909_zb_feat
     data: {
       ...data
     }
@@ -125,22 +121,14 @@ exports.addAddress = data => {
 
 exports.getAddress = () => {
   return get({
-<<<<<<< HEAD
-    path: '/api/wechat/user/address_list',
-=======
     path: "/api/wechat/user/address_list",
->>>>>>> 20190909_zb_feat
     data: {}
   });
 };
 
 exports.updateAddress = data => {
   return post({
-<<<<<<< HEAD
-    path: '/api/wechat/user/edit_address',
-=======
     path: "/api/wechat/user/edit_address",
->>>>>>> 20190909_zb_feat
     data: {
       ...data
     }
@@ -149,11 +137,7 @@ exports.updateAddress = data => {
 
 exports.delAddress = data => {
   return post({
-<<<<<<< HEAD
-    path: '/api/wechat/user/del_address',
-=======
-    path: "/api/wechat/user/deldress",
->>>>>>> 20190909_zb_feat
+    path: "/api/wechat/user/del_address",
     data: {
       ...data
     }
