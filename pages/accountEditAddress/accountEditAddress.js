@@ -14,7 +14,6 @@ Page({
     controType:1
   },
   onLoad: function (opt) {
-    debugger;
     if (Object.keys(opt).length !== 0) {
       let { realname, sex, mobile, address, door, tag, is_comment, id, controType } = opt;
       this.setData({
@@ -57,7 +56,7 @@ Page({
     });
   },
   saveAddress: function (e) {
-    let { realname, sex, mobile, address, door, is_comment, tag } = e.detail.value;
+    let { realname, sex, mobile, address, door, tag } = e.detail.value;
     if (realname === '') {
       api.showToast({
         title: '联系人不能为空',
@@ -115,7 +114,7 @@ Page({
         request.updateAddress({
           ...e.detail.value
         }).then(res => {
-          if (res.code==0) {
+          if (res.code === 0) {
             api.showToast({
               title: '编辑成功',
               icon: 'none',

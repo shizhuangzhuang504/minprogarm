@@ -22,7 +22,7 @@
     </view>
     <view class="row">
       <text class="label">地址</text>
-      <textarea name="address" value="{{address}}" placeholder="请选择您的地址"  auto-height disabled  catchtap="chooseLocation">{{address}}</textarea>
+      <input name="address" value="{{address}}" placeholder="请选择您的地址"  auto-height disabled  bindtap="chooseLocation"/>
       <image class="icon-location" src="./../../assets/image/icon-location.png" mode="aspectFill" bindtap="chooseLocation"></image>
     </view>
     <view class="row">
