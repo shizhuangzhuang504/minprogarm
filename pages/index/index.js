@@ -67,12 +67,13 @@ Page({
     });
   },
   getLoacalAddress: function() {
+    let userInfo = wx.getStorageSync("userInfo");
     api
       .getStorage({
         key: "address"
       })
       .then(res => {
-        console.log(res);
+        console.log('cesss',res);
         if (res.data) {
           this.setData({
             address: res.data
@@ -80,13 +81,15 @@ Page({
         }
       })
       .catch(err => {
-        this.getAddress();
+        if (userInfo.Authorization) {
+          this.getAddress();
+        }
       });
   },
   getAddress: function() {
     request.getAddress().then(res => {
-      if (res.length) {
-        let arr = res.find(element => element.com == "1");
+      if (res.data.length) {
+        let arr = res.data.find(element => element.is_comment == "1");
         this.setData({
           address: arr
         });

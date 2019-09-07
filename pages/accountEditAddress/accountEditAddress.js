@@ -11,23 +11,20 @@ Page({
     tag: '',
     is_comment: 0,
     id: '',
-    uid: '',
     controType:1
   },
   onLoad: function (opt) {
-    console.log(opt)
     if (Object.keys(opt).length !== 0) {
-      let { realname, sex, mobile, address, door, tag, com, id, uid, controType } = opt;
+      let { realname, sex, mobile, address, door, tag, is_comment, id, controType } = opt;
       this.setData({
         realname,
         sex,
         mobile,
         address,
         door,
-        tag: tag,
-        is_comment: com,
+        tag,
+        is_comment,
         id,
-        uid,
         controType
       });
       return;
@@ -40,7 +37,6 @@ Page({
     });
   },
   chooseLocation: function () {
-    console.log('揍你');
     api.chooseLocation()
     .then(res => {
       this.setData({
@@ -56,11 +52,11 @@ Page({
   },
   chooseCommon: function () {
     this.setData({
-      is_comment: this.data.is_comment === 0 ? 1 : 0
+      is_comment: this.data.is_comment   === 0 ? 1 : 0
     });
   },
   saveAddress: function (e) {
-    let { realname, sex, mobile, address, door, tag, com  } = e.detail.value;
+    let { realname, sex, mobile, address, door, tag } = e.detail.value;
     if (realname === '') {
       api.showToast({
         title: '联系人不能为空',

@@ -108,6 +108,9 @@
   height: 34rpx;
   font-size: 30rpx;
   line-height: 34rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .confirm .userinfo .user .name {
   font-size: 24rpx;

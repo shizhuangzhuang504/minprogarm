@@ -137,7 +137,7 @@ exports.updateAddress = data => {
 
 exports.delAddress = data => {
   return post({
-    path: "/api/wechat/user/deldress",
+    path: "/api/wechat/user/del_address",
     data: {
       ...data
     }
