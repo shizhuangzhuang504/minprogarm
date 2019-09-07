@@ -38,7 +38,8 @@ page {
 }
 .form textarea {
   padding: 32rpx 0 22rpx;
-  line-height: 32rpx;
+  /* line-height: 32rpx; */
+  box-sizing: border-box;
 }
 .form-radio {
   display: inline-block;
@@ -68,7 +69,7 @@ page {
   height: 40rpx;
   color: #333;
   font-size: 30rpx;
-  line-height: 38rpx;
+  line-height: 36rpx;
   text-align: center;
 }
 .form .tag.active {

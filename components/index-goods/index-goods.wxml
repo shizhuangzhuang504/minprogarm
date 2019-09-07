@@ -4,12 +4,12 @@
   <view class="row">
     <view class="price">￥{{goods.price}}</view>
     <view class="number" hidden="{{flase}}">
-      <view class="big">
-        <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!number}}" bindtap="reduce"></image>
+      <view class="big" bindtap="reduce">
+        <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!number}}" ></image>
       </view>
       <text wx:if="{{number}}">{{number}}</text>
-      <view class="big">
-        <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" bindtap="add"></image>
+      <view class="big" bindtap="add">
+        <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" ></image>
       </view>
     </view>
   </view>

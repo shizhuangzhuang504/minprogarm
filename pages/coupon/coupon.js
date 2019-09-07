@@ -6,27 +6,7 @@ Page({
   data: {
     loginStatus: false,
     type: 'coupon',
-    couponList: [{
-        "id": 6,
-        "status": 0,
-        "cname": "【中秋赏月】有礼大放送",
-        "sttime": 1561966564,
-        "entime": 1562484964,
-        "discount": 9.0,
-        "info": "局偶偶我去欧文我IQ欧文i",
-        "type": 1
-      },
-      {
-        "id": 5,
-        "status": 0,
-        "cname": "【中秋赏月】有礼大放送",
-        "sttime": 1561966564,
-        "entime": 1562484964,
-        "discount": 8.0,
-        "info": "局偶偶我去欧文我IQ欧文i",
-        "type": 1
-      }
-    ],
+    couponList: [],
     money: 0,
     discount: 0,
     isChargeTips: true,
@@ -61,7 +41,7 @@ Page({
       loginStatus: Authorization ? true : false
     });
     if (Authorization) {
-      this.getCoupon();
+      this.getCouponList();
     }
   },
   userLogin: function(e) {
@@ -80,23 +60,23 @@ Page({
       type
     });
     if (type === 'coupon') {
-      this.getCoupon();
+      this.getCouponList();
     } else {
       this.getUserInfo();
       this.getRebate();
     }
   },
-  getCoupon: function() {
-    request.getCoupon()
+  getCouponList: function() {
+    request.getCouponList()
       .then(res => {
-        console.log(res);
-        if (res.data.length) {
-          for (let i = 0; i < res.data.length; i++){
+        console.log(res.list_data);
+        if (res.list_data.length) {
+          for (let i = 0; i < res.list_data.length; i++){
             changetime(data[i].sttime);
             changetime(data[i].entime);
           }
           this.setData({
-            couponList: res.data
+            couponList: res.list_data
           });
         }
       });
@@ -107,7 +87,6 @@ Page({
       index
     } = e.currentTarget.dataset;
     let couponItem = this.data.couponList[index];
-    console.log(couponItem);
     if (coupon && couponItem.status === 0) {
       api.setStorage({
           key: 'coupon',
@@ -232,7 +211,6 @@ Page({
         return '' + num;
       }
     }
-    console.log(num)
     var time = new Date(num * 1000);
     var year = time.getFullYear();//年
     var mon = setDb(time.getMonth() + 1);//0 

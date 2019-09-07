@@ -297,7 +297,7 @@ Page({
     });
     this.priceCalc();
   },
-  priceCalc: function() {
+  priceCalc: function () {
     let {
       starprice,
       orderGoodsList
@@ -305,6 +305,7 @@ Page({
     let goodsPrice = 0;
     let goodsbprice = 0;
     let diffPrice = 0;
+    let discount = 8;
     orderGoodsList.forEach(item => {
       goodsPrice += item.price * item.number;
       goodsbprice += item.bprice;
@@ -314,10 +315,20 @@ Page({
     } else {
       diffPrice = starprice - goodsPrice;
     }
+    let orderTotalPrice = goodsPrice + goodsbprice + sendprice - discount;
+    let sendprice = 0;
+    if (+goodsPrice> 30 || +goodsPrice === 0) {
+      sendprice =  0;
+    } else {
+      sendprice =  this.data.localSendprice;
+    }
     this.setData({
       goodsPrice,
       goodsbprice,
-      diffPrice
+      diffPrice,
+      sendprice,
+      discount,
+      orderTotalPrice
     });
   },
   totalPriceCalc: function() {

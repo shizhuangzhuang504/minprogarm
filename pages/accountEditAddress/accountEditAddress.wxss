@@ -14,8 +14,7 @@ page {
   border-bottom: none;
 }
 .form .label,
-.form input,
-.form textarea {
+.form input{
   display: inline-block;
   vertical-align: top;
 }
@@ -37,8 +36,9 @@ page {
   line-height: 59rpx;
 }
 .form textarea {
-  padding: 32rpx 0 22rpx;
-  line-height: 32rpx;
+  padding-top: 12rpx;
+  box-sizing: border-box;
+  vertical-align: center;
 }
 .form-radio {
   display: inline-block;
@@ -68,7 +68,7 @@ page {
   height: 40rpx;
   color: #333;
   font-size: 30rpx;
-  line-height: 38rpx;
+  line-height: 36rpx;
   text-align: center;
 }
 .form .tag.active {
@@ -103,4 +103,12 @@ page {
   text-align: center;
   background: #e94215;
   transform: translateX(-50%);
+}
+.tag-content {
+  display: flex;
+  align-items: center;
+}
+.tag-content .tag {
+  align-items: center;
+  line-height: 40rpx;
 }

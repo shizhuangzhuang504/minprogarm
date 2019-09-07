@@ -15,15 +15,12 @@ Page({
     hotList: [],
     address: {},
     iscoupon:true,
+    isSelect: false,
     localSendprice: 0, // 配送费
     orderGoodsList: [],
     remark:""
   },
-  onTabItemTap(item) {
-    app.globalData.isConfirm = false;
-  },
   onLoad: function(option) {
-    this.authorize();
     this.getSwiper();
     this.getHotList();
     this.getShopList();
@@ -32,6 +29,11 @@ Page({
         iscoupon: !this.data.iscoupon
       })
     }
+  },
+  onMyevent:function(e){
+    this.setData({
+      isSelect: e.detail
+    })
   },
   onShow: function() {
     this.checkLogin();
@@ -57,7 +59,6 @@ Page({
       })
       .catch(err => {
         this.getAddress();
-        console.log(err,'cccc');
       });
   },
   getAddress: function () {
@@ -69,12 +70,6 @@ Page({
           address: arr,
         });
       }
-    });
-  },
-  authorize: function() {
-    //  地理位置授权申请
-    api.authorize({
-      scope: 'scope.userLocation'
     });
   },
   checkLogin: function() {
@@ -265,6 +260,7 @@ Page({
     } else {
       sendprice =  this.data.localSendprice;
     }
+    app.globalData.goodsPrice = goodsPrice;
     this.setData({
       goodsPrice,
       goodsbprice,

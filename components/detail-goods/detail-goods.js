@@ -1,4 +1,4 @@
-const cfg = require('./../../config/index');
+const cfg = require('../../config/index');
 
 Component({
   options: {
@@ -16,7 +16,8 @@ Component({
   },
   data: {
     baseURL: cfg.baseURL,
-    number: 0
+    number: 0,
+    info: ''
   },
   lifetimes: {
     attached: function() {
@@ -26,31 +27,31 @@ Component({
     }
   },
   methods: {
-    reduce: function(e) {
-      let index = e.target.dataset.index;
+    reduce: function() {
+      this.setData({
+        number: this.data.number - 1
+      });
       let {
         id,
         cname,
         img1,
         price,
-        bprice,
-        remark
-      } = e.target.dataset.good;
+        bprice
+      } = this.properties.goods;
       this.triggerEvent('goodscalc', {
         id,
-        type: 'reduce',
-        index,
         cname,
         img1,
         price,
         bprice,
-        remark: ""
+        number: this.data.number
       });
     },
-    add: function(e) {
-
+    add: function() {
       // if (wx.getStorageSync('isOutRange')) {
-      let index = e.target.dataset.index
+      this.setData({
+        number: this.data.number + 1
+      });
       // } else {
       //   wx.showToast({
       //     icon: "none",
@@ -64,24 +65,23 @@ Component({
         price,
         bprice,
         remark
-      } = e.target.dataset.good;
+      } = this.properties.goods;
       this.triggerEvent('goodscalc', {
         id,
-        type: 'add',
-        index,
         cname,
         img1,
         price,
         bprice,
-        remark: ""
+        number: this.data.number,
+        remark:""
       });
     },
-    gogoodsdetail: function(e) {
-      let index = e.target.dataset.index;
-      let foodinfo = this.properties.goods.data[index];
-      let data = JSON.stringify(foodinfo);
+    //跳转商品详情
+    gogoodsdetail: function() {
+      console.log(this.properties.goods)
+      var data = JSON.stringify(this.properties.goods);
       wx.navigateTo({
-        url: '/pages/goods-details/goods-details?data=' + data,
+        url: '/pages/goods-details/goods-details?data='+data,
       })
     },
   },

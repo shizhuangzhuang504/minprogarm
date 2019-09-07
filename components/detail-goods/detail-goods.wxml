@@ -1,0 +1,26 @@
+<view class="goods-details">
+    <image src="{{baseURL}}/{{goods.img1||goods.img2||goods.img3}}" mode="widthFix"  bindtap="bindImgPreView"></image>
+    <view class="food-info">
+      <view class="food-name">{{goods.cname}}</view>
+      <view class="row">
+        <view class="price">￥{{goods.price}}</view>
+         <view class="number" hidden="{{flase}}">
+          <view class="big">
+            <image class="icon-number-reduce" src="./../../assets/image/icon-number-reduce.png" mode="aspectFill" hidden="{{!number}}" bindtap="reduce"></image>
+          </view>
+          <text wx:if="{{number}}">{{number}}</text>
+          <view class="big">
+            <image class="icon-number-add" src="./../../assets/image/icon-number-add.png" mode="aspectFill" bindtap="add"></image>
+          </view>
+        </view>
+      </view>
+      <view class="food-label">产品描述：</view>
+      <view class="food-desc">{{info?info:"这是产品描述这是产品描述这是产品描述这是产品描述这是产品描述"}}</view>
+      <view class="food-label">备注：</view>
+      <view>
+        <textarea type="text" bindinput="bindblur"></textarea>
+      </view>
+      <view class="btn-wrap">
+      </view>
+    </view>
+  </view>

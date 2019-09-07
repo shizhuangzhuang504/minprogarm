@@ -4,7 +4,7 @@
   </view>
 <block wx:for="{{goods.data}}" wx:for-item="food" wx:key="food.index">
 <view class="order-goods">
-  <image class="goods-image" src="{{baseURL}}/{{food.img1}}" data-idx = "{{idx}}" mode="aspectFill" lazy-load="{{true}}" bindtap="gogoodsdetail"></image>
+  <image class="goods-image" src="{{baseURL}}/{{food.img1}}" data-index = "{{index}}" mode="aspectFill" lazy-load="{{true}}" bindtap="gogoodsdetail"></image>
   <view class="name">{{food.cname}}</view>
   <view class="desc">描述:{{food.pinfo?food.pinfo:"商品描述描述商品描述描述商品描述描述商品描述描述商品描述描述"}}</view>
   <view class="row">

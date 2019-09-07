@@ -1,17 +1,23 @@
 const cfg = require('./../../config/index');
 const api = require('./../../utils/api');
 const request = require('./../../utils/request');
+const app = getApp();
 Page({
   data: {
     baseURL: cfg.baseURL,
-    cname: '',
-    price: '',
-    info: '',
-    imgsrc: '',
-    goods: {},
-    remark: '',
-    number: 0,
-    orderGoodsList: []
+    detailData: {
+      cname: '',
+      price: '',
+      info: '',
+      imgsrc: '',
+      goods: {},
+      remark: '',
+      number: 0,
+    },
+    localSendprice: 0, // 配送费
+    orderGoodsList: [],
+    detailArr: [],
+    goods: []
   },
 
   /**
@@ -28,71 +34,79 @@ Page({
       info: res.pinfo,
       imgsrc: res.img1
     })
+    
+    this.data.detailArr.push(res)
+    this.setData({
+      goods: this.data.detailArr
+    })
+    this.getShopList();
+    console.log(this.data.goods);
     //获取缓存内的订单信息
+    // api.getStorage({
+    //     key: 'orderGoodsList'
+    //   })
+    //   .then(res => {
+    //     console.log(res);
+    //     this.setData({
+    //       orderGoodsList: res.data
+    //     })
+    //     this.priceCalc();
+    //   })
+  },
+  onShow: function() {
+    this.getLoacalAddress();
+  },
+  getLoacalAddress: function () {
     api.getStorage({
-        key: 'orderGoodsList'
+      key: 'address'
+    })
+      .then(res => {
+        console.log(res)
+        if (res.data) {
+          this.setData({
+            address: res.data
+          });
+        }
+      })
+      .catch(err => {
+        this.getAddress();
+        console.log(err,'cccc');
+      });
+  },
+  getAddress: function () {
+    request.getAddress()
+    .then(res => {
+      if (res.length) {
+        let arr = res.find((element =>element.com == '1'));
+        this.setData({
+          address: arr,
+        });
+      }
+    });
+  },
+  // 获取店铺列表
+  getShopList: function() {
+    api.getLocation()
+      .then(res => {
+        let {
+          latitude,
+          longitude
+        } = res;
+        return request.getShopList({
+          latitude,
+          longitude
+        });
       })
       .then(res => {
-        console.log(res);
-        this.setData({
-          orderGoodsList: res.data
-        })
-        this.priceCalc();
-      })
+        if (res.length) {
+          this.setData({
+            localSendprice: res[0].sendprice,
+          });
+        }
+      });
   },
-  reduce: function() {
-    this.setData({
-      number: this.data.number - 1
-    });
-    // let {
-    //   id,
-    //   cname,
-    //   img1,
-    //   price,
-    //   bprice
-    // } = this.data.goods;
-    // this.goodsCalc({
-    //   id,
-    //   cname,
-    //   img1,
-    //   price,
-    //   bprice,
-    //   number: this.data.number
-    // });
-  },
-  //添加按钮事件
-  add: function() {
-    // if (wx.getStorageSync('isOutRange')) {
-    this.setData({
-      number: this.data.number + 1
-    });
-    // } else {
-    //   wx.showToast({
-    //     icon: "none",
-    //     title: "超出服务范围"
-    //   })
-    // }
-    // let {
-    //   id,
-    //   cname,
-    //   img1,
-    //   price,
-    //   bprice,
-    //   remark
-    // } = this.data.goods;
-    // this.goodsCalc({
-    //   id,
-    //   cname,
-    //   img1,
-    //   price,
-    //   bprice,
-    //   number: this.data.number,
-    //   remark: this.data.remark
-    // })
-    this.goodsCalc();
-  },
-  //生成订单函数
-  goodsCalc: function(e) {
+   //生成订单函数
+   goodsCalc: function (e) {
     let list = this.data.orderGoodsList;
     let flag = false;
     let filterIndex = -1;
@@ -110,10 +124,9 @@ Page({
     this.setData({
       orderGoodsList: list
     });
-    console.log(this.data.orderGoodsList);
     this.priceCalc();
   },
-  priceCalc: function() {
+  priceCalc: function () {
     let {
       starprice,
       orderGoodsList
@@ -121,7 +134,6 @@ Page({
     let goodsPrice = 0;
     let goodsbprice = 0;
     let diffPrice = 0;
-    let sendprice = 0;
     let discount = 8;
     orderGoodsList.forEach(item => {
       goodsPrice += item.price * item.number;
@@ -133,6 +145,13 @@ Page({
       diffPrice = starprice - goodsPrice;
     }
     let orderTotalPrice = goodsPrice + goodsbprice + sendprice - discount;
+    let sendprice = 0;
+    if (+goodsPrice> 30 || +goodsPrice === 0) {
+      sendprice =  0;
+    } else {
+      sendprice =  this.data.localSendprice;
+    }
+    app.globalData.goodsPrice = goodsPrice;
     this.setData({
       goodsPrice,
       goodsbprice,
@@ -156,5 +175,9 @@ Page({
     this.setData({
       remark: e.detail.value
     })
+  },
+  //页面隐藏后存储订单信息
+  onHide:function(){
+    wx.setStorageSync("orderGoodsList", this.data.orderGoodsList);
   }
 })

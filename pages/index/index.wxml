@@ -6,7 +6,7 @@
 </swiper>
 <view class="shop">
   <view class="search">
-    <text>匠丰欢迎您！</text>
+    <text>匠丰欢迎您 ！</text>
   </view>
   <view class="shop-name">{{shopName ? shopName : ''}}</view>
   <view class="distance">
@@ -31,7 +31,7 @@
     <text>爆款推荐</text>
   </view>
   <view class="list">
-    <index-goods class="goods-item" wx:for="{{hotList}}" wx:key="{{item.id}}" goods="{{item}}" bindgoodscalc="goodsCalc"></index-goods>
+    <index-goods class="goods-item"  bind:myevent='onMyevent' wx:for="{{hotList}}" wx:key="{{item.id}}" goods="{{item}}" bindgoodscalc="goodsCalc"></index-goods>
   </view>
 </view>
 <view class="free-wrap" hidden="{{iscoupon}}">
@@ -41,4 +41,6 @@
     <text class="date">2019年8月16日  —  2019年9月02日</text>
   </view>
 </view>
-<calc-car class="calc-car" address="{{address}}" goodsPrice="{{goodsPrice}}" orderTotalPrice="{{orderTotalPrice}}" sendprice="{{sendprice}}" discount="{{discount}}" goodsbprice="{{goodsbprice}}" diffPrice="{{diffPrice}}" orderGoodsList="{{orderGoodsList}}"></calc-car>
+<view hidden="{{!isSelect}}">
+  <calc-car class="calc-car"  address="{{address}}" goodsPrice="{{goodsPrice}}" orderTotalPrice="{{orderTotalPrice}}" sendprice="{{sendprice}}" discount="{{discount}}" goodsbprice="{{goodsbprice}}" diffPrice="{{diffPrice}}" orderGoodsList="{{orderGoodsList}}"></calc-car>
+</view>
