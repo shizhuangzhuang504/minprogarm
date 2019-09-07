@@ -20,7 +20,7 @@
     </view>
     <view class="row">
       <text class="label">地址</text>
-      <textarea name="address" placeholder="请选择您的地址" value="{{address}}" auto-height disabled value="{{address}}" catchtap="chooseLocation"></textarea>
+      <textarea name="address" value="{{address}}" placeholder="请选择您的地址"  auto-height disabled  catchtap="chooseLocation">{{address}}</textarea>
       <image class="icon-location" src="./../../assets/image/icon-location.png" mode="aspectFill" bindtap="chooseLocation"></image>
     </view>
     <view class="row">
@@ -37,10 +37,10 @@
         <input class="hidden" type="text" name="tag" value="{{tag}}" />
     </view>
     <view class="common" bindtap="chooseCommon">
-      <image class="{{isCommon == 1 ? 'icon-checkbox-checked' : 'icon-checkbox'}}" src="./../../assets/image/{{isCommon == 1 ? 'icon-checkbox-checked' : 'icon-checkbox'}}.png" mode="widthFix" bindtap=""></image>
+      <image class="{{is_comment == 1 ? 'icon-checkbox-checked' : 'icon-checkbox'}}" src="./../../assets/image/{{is_comment == 1 ? 'icon-checkbox-checked' : 'icon-checkbox'}}.png" mode="widthFix" bindtap=""></image>
       设为常用地址
-      <input class="hidden" type="text" name="com" value="{{isCommon}}" />
-      <input class="hidden" type="text" name="upid" value="{{id}}" />
+      <input class="hidden" type="text" name="is_comment" value="{{is_comment}}" />
+      <input class="hidden" type="text" name="id" value="{{id}}" />
     </view>
   </view>
   <button class="save" form-type="submit">保存</button>

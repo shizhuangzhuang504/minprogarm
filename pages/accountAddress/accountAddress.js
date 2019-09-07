@@ -16,10 +16,10 @@ Page({
   getAddress: function () {
     request.getAddress()
     .then(res => {
-      if (res.length) {
-        let arr = res.find((element =>element.com == '1'));
+      if (res.data.length) {
+        let arr = res.data.find((element =>element.is_comment == '1'));
         this.setData({
-          addressList: res,
+          addressList: res.data,
           curAddress: arr
         });
       }
@@ -28,8 +28,7 @@ Page({
   chooseItem: function(e) {
     let { index } = e.currentTarget.dataset;
     let addressObj = {
-      id: this.data.addressList[index].uid,
-      upid: this.data.addressList[index].id
+      id: this.data.addressList[index].id,
     };
     if (this.data.deleteObj.id === addressObj.id) {
       this.setData({
@@ -65,7 +64,6 @@ Page({
   },
   deleteAddress: function(e) {
     let _this = this; 
-    let { id, upid } = _this.data.deleteObj;
     wx.showModal({
       title: '提示',
       content: '确定要删除？',
@@ -100,9 +98,9 @@ Page({
   editAddress: function (e) {
     let { index } = e.currentTarget.dataset;
     let addressObj = this.data.addressList[index];
-    let { realname, sex, mobile, address, door, biao, com, id, uid  } = addressObj;
+    let { realname, sex, mobile, address, door, tag, is_comment, id } = addressObj;
     api.navigateTo({
-      url: `/pages/accountEditAddress/accountEditAddress?realname=${realname}&sex=${sex}&mobile=${mobile}&address=${address}&door=${door}&biao=${biao}&com=${com}&id=${id}&uid=${uid}&controType=2`
+      url: `/pages/accountEditAddress/accountEditAddress?realname=${realname}&sex=${sex}&mobile=${mobile}&address=${address}&door=${door}&tag=${tag}&is_comment=${is_comment}&id=${id}&controType=2`
     });
   }
 })
