@@ -40,7 +40,6 @@ Page({
     });
   },
   chooseLocation: function () {
-    console.log('揍你');
     api.chooseLocation()
     .then(res => {
       this.setData({
@@ -60,7 +59,8 @@ Page({
     });
   },
   saveAddress: function (e) {
-    let { realname, sex, mobile, address, door, biao, com  } = e.detail.value;
+    console.log(e);
+    let { realname, sex, mobile, address, door, biao, com, tag } = e.detail.value;
     if (realname === '') {
       api.showToast({
         title: '联系人不能为空',
@@ -91,7 +91,7 @@ Page({
         icon: 'none'
       });
       return;
-    } else if (biao === '') {
+    } else if (tag === '') {
       api.showToast({
         title: '请选择标签',
         icon: 'none'
@@ -102,7 +102,7 @@ Page({
         request.addAddress({
           ...e.detail.value
         }).then(res => {
-          if (res.status_code) {
+          if (res.code == 0) {
             api.showToast({
               title: '保存成功',
               icon: 'none',
@@ -118,7 +118,7 @@ Page({
         request.updateAddress({
           ...e.detail.value
         }).then(res => {
-          if (res.status_code) {
+          if (res.code) {
             api.showToast({
               title: '编辑成功',
               icon: 'none',

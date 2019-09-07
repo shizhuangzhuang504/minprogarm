@@ -91,7 +91,7 @@ exports.getMenuGoods = data => {
 
 exports.addAddress = data => {
   return post({
-    path: '/api/wechat/user/address',
+    path: '/api/wechat/user/add_address',
     data: {
       ...data
     }
@@ -100,14 +100,14 @@ exports.addAddress = data => {
 
 exports.getAddress = () => {
   return get({
-    path: '/api/wechat/user/addrlist',
+    path: '/api/wechat/user/address_list',
     data: {}
   })
 };
 
 exports.updateAddress = data => {
   return post({
-    path: '/api/wechat/user/upadress',
+    path: '/api/wechat/user/edit_address',
     data: {
       ...data
     }
@@ -116,7 +116,7 @@ exports.updateAddress = data => {
 
 exports.delAddress = data => {
   return post({
-    path: '/api/wechat/user/deldress',
+    path: '/api/wechat/user/del_address',
     data: {
       ...data
     }
