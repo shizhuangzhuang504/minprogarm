@@ -5,7 +5,7 @@
       <image class="icon-radio" catchtap="choose" src="./../../assets/image/icon-radio-2-checked.png" mode="aspectFill" ></image>
       <view class="row title">{{curAddress.address}}</view>
       <view class="row">
-        <text class="tag" wx:if="{{curAddress.com === 1}}">常用</text>
+        <text class="tag" wx:if="{{curAddress.is_comment === 1}}">常用</text>
         <text class="mobile">{{curAddress.mobile}}</text>
         <text class="username">{{curAddress.realname}}</text>
         <text class="mobile" wx:if="{{curAddress.sex === 1}}">先生</text>
@@ -22,7 +22,7 @@
       </view>
       <view class="row title">{{item.address}}</view>
       <view class="row">
-        <text class="tag" wx:if="{{item.com === 1}}">常用</text>
+        <text class="tag" wx:if="{{item.is_comment === 1}}">常用</text>
         <text class="mobile">{{item.mobile}}</text>
         <text class="username">{{item.realname}}</text>
         <text class="mobile" wx:if="{{item.sex === 1}}">先生</text>

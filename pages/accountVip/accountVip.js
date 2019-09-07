@@ -1,20 +1,19 @@
-const api = require('./../../utils/api');
-const request = require('./../../utils/request');
+const api = require("./../../utils/api");
+const request = require("./../../utils/request");
 
 Page({
   data: {
-    avatarUrl: '',
-    nickName: '',
-    mobile: '',
+    avatarUrl: "",
+    nickName: "",
+    mobile: "",
     consume: 0
   },
-  onLoad: function () {
+  onLoad: function() {
     this.getUser();
     this.getUserInfo();
   },
-  getUser: function () {
-    request.getUserInfo()
-    .then(res => {
+  getUser: function() {
+    request.getUserInfo().then(res => {
       console.log(res);
       this.setData({
         mobile: res.mobile,
@@ -22,18 +21,17 @@ Page({
       });
     });
   },
-  getUserInfo: function () {
-    api.getUserInfo()
-    .then(res => {
-      let {avatarUrl, nickName} = res.userInfo;
+  getUserInfo: function() {
+    api.getUserInfo().then(res => {
+      let { avatarUrl, nickName } = res.userInfo;
       this.setData({
         avatarUrl,
         nickName
       });
     });
   },
-  getphonenumber: function (e) {
-    let {iv, encryptedData} = e.detail;
+  getphonenumber: function(e) {
+    let { iv, encryptedData } = e.detail;
     console.log({ iv, encryptedData });
     wx.checkSession({
       success() {
@@ -42,21 +40,22 @@ Page({
       fail() {
         console.log("session_key 已经失效，需要重新执行登录流程");
       }
-    })
-    request.getMobile({
-      iv,
-      encryptData: encryptedData,
-      session_key: wx.getStorageSync('session_key'),
-      type: 0
-    })
-    .then(res => {
-      console.log(res);
-      if (res) {
-        this.setData({
-          mobile: res.mobile
-        });
-        console.log(11);
-      }
     });
+    request
+      .getMobile({
+        iv,
+        encryptData: encryptedData,
+        session_key: wx.getStorageSync("session_key"),
+        type: 0
+      })
+      .then(res => {
+        console.log(res);
+        if (res) {
+          this.setData({
+            mobile: res.mobile
+          });
+          console.log(11);
+        }
+      });
   }
-})
+});

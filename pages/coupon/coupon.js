@@ -1,11 +1,10 @@
-const api = require('./../../utils/api');
-const request = require('./../../utils/request');
+const api = require("./../../utils/api");
+const request = require("./../../utils/request");
 const app = getApp();
 
 Page({
   data: {
-    loginStatus: false,
-    type: 'coupon',
+    type: "coupon",
     couponList: [],
     money: 0,
     discount: 0,
@@ -18,48 +17,46 @@ Page({
     console.log(app.globalData.couponCard);
     if (couponCard) {
       this.setData({
-        type: 'card'
+        type: "card"
       });
       app.globalData.couponCard = false;
     }
   },
   onShow: function() {
     this.checkLogin();
-    api.getStorage({
-      key: 'gocard'
-    })
+    api
+      .getStorage({
+        key: "gocard"
+      })
       .then(res => {
         console.log(res);
         this.setData({
           type: res.data
-        })
-      })
+        });
+      });
   },
   checkLogin: function() {
-    let Authorization = wx.getStorageSync('Authorization');
+    let userInfo = wx.getStorageSync("userInfo");
     this.setData({
-      loginStatus: Authorization ? true : false
+      userInfo
     });
-    if (Authorization) {
+    if (userInfo.Authorization) {
       this.getCouponList();
     }
   },
   userLogin: function(e) {
-    app.userLogin(e)
-      .then(res => {
-        if (res) {
-          this.onShow();
-        }
-      });
+    app.userLogin(e, this).then(res => {
+      if (res) {
+        this.onShow();
+      }
+    });
   },
   chooseType: function(e) {
-    let {
-      type
-    } = e.currentTarget.dataset;
+    let { type } = e.currentTarget.dataset;
     this.setData({
       type
     });
-    if (type === 'coupon') {
+    if (type === "coupon") {
       this.getCouponList();
     } else {
       this.getUserInfo();
@@ -67,127 +64,120 @@ Page({
     }
   },
   getCouponList: function() {
-    request.getCouponList()
-      .then(res => {
-        console.log(res.list_data);
-        if (res.list_data.length) {
-          for (let i = 0; i < res.list_data.length; i++){
-            changetime(data[i].sttime);
-            changetime(data[i].entime);
-          }
-          this.setData({
-            couponList: res.list_data
-          });
-        }
-      });
+    request.getCouponList().then(res => {
+      console.log(res.data.list_data);
+      if (res.code === 0) {
+        let { list_data } = res.data;
+        this.setData({
+          couponList: list_data
+        });
+      }
+    });
   },
   chooseCoupon: function(e) {
     let coupon = app.globalData.coupon;
-    let {
-      index
-    } = e.currentTarget.dataset;
+    let { index } = e.currentTarget.dataset;
     let couponItem = this.data.couponList[index];
     if (coupon && couponItem.status === 0) {
-      api.setStorage({
-          key: 'coupon',
+      api
+        .setStorage({
+          key: "coupon",
           data: {
             ...couponItem
           }
         })
         .then(res => {
           api.switchTab({
-            url: '/pages/index/index'
+            url: "/pages/index/index"
           });
-          // api.switchTab({
-          //   url: '/pages/order/order'
-          // });
         });
     } else {
-      api.setStorage({
-          key: 'coupondetails',
+      api
+        .setStorage({
+          key: "coupondetails",
           data: {
             ...couponItem
           }
         })
         .then(res => {
           api.navigateTo({
-            url: '/pages/couponDetails/couponDetails'
-          })
-        })
+            url: "/pages/couponDetails/couponDetails"
+          });
+        });
     }
     app.globalData.coupon = false;
   },
   getUserInfo: function() {
-    request.getUserInfo()
-      .then(res => {
-        this.setData({
-          money: res.money,
-          discount: res.discount
-        });
+    request.getUserInfo().then(res => {
+      this.setData({
+        money: res.money,
+        discount: res.discount
       });
+    });
   },
   getRebate: function() {
-    request.getRebate()
-      .then(res => {
-        if (res.length) {
-          this.setData({
-            rebateList: res
-          });
-        }
-      });
+    request.getRebate().then(res => {
+      if (res.length) {
+        this.setData({
+          rebateList: res
+        });
+      }
+    });
   },
   chargeInput: function(e) {
     let value = e.detail.value;
     if (value) {
       this.setData({
         isChargeTips: false,
-        chargeNumber: value,
+        chargeNumber: value
       });
     } else {
       this.setData({
         isChargeTips: true,
-        chargeNumber: value,
+        chargeNumber: value
       });
     }
   },
   recharge: function() {
     let number = this.data.chargeNumber;
     let reg = /^([1-9][0-9]*(\.\d{1,2})?)|(0\.\d{1,2})/;
-    if (number === '') {
+    if (number === "") {
       api.showToast({
-        title: '请输入金额',
-        icon: 'none'
+        title: "请输入金额",
+        icon: "none"
       });
       return;
     } else if (!reg.test(number)) {
       api.showToast({
-        title: '请正确输入金额',
-        icon: 'none'
+        title: "请正确输入金额",
+        icon: "none"
       });
       return;
     } else {
-      request.recharge({
+      request
+        .recharge({
           money: number
         })
         .then(res => {
           console.log(res);
           if (res.status_code) {
             return api.requestPayment({
-              'timeStamp': res.data.timestamp,
-              'nonceStr': res.data.nonceStr,
-              'package': res.data.package,
-              'signType': res.data.signType,
-              'paySign': res.data.paySign,
+              timeStamp: res.data.timestamp,
+              nonceStr: res.data.nonceStr,
+              package: res.data.package,
+              signType: res.data.signType,
+              paySign: res.data.paySign
             });
           } else {
             return Promise.reject();
           }
         })
         .then(res => {
-          if (res.errMsg === 'requestPayment:ok') {
-            api.showToast({
-                title: '充值成功',
-                icon: 'none',
+          if (res.errMsg === "requestPayment:ok") {
+            api
+              .showToast({
+                title: "充值成功",
+                icon: "none",
                 duration: 2000
               })
               .then(res => {
@@ -195,27 +185,27 @@ Page({
               });
           } else {
             api.showToast({
-              title: '充值失败',
-              icon: 'none'
+              title: "充值失败",
+              icon: "none"
             });
           }
         });
     }
   },
   // 毫秒时间转换
-  changetime: function (num) {
+  transformDate: function(num) {
     function setDb(num) {
       if (num < 10) {
-        return '0' + num;
+        return "0" + num;
       } else {
-        return '' + num;
+        return "" + num;
       }
     }
     var time = new Date(num * 1000);
-    var year = time.getFullYear();//年
-    var mon = setDb(time.getMonth() + 1);//0 
-    var day = setDb(time.getDate());//24
-    var res = year + "年" + mon + "月" + day + "日"
+    var year = time.getFullYear(); //年
+    var mon = setDb(time.getMonth() + 1); //0
+    var day = setDb(time.getDate()); //24
+    var res = year + "年" + mon + "月" + day + "日";
     return res;
   }
-})
+});
