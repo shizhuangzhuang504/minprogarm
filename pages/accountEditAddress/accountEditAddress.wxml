@@ -34,7 +34,7 @@
         <view class="tag {{tag == 2 ? 'active' : ''}}" data-tag="2" bindtap="chooseTag">家</view>
         <view class="tag {{tag == 3 ? 'active' : ''}}" data-tag="3" bindtap="chooseTag">学校</view>
       </view>
-        <input class="hidden" type="text" name="biao" value="{{tag}}" />
+        <input class="hidden" type="text" name="tag" value="{{tag}}" />
     </view>
     <view class="common" bindtap="chooseCommon">
       <image class="{{isCommon == 1 ? 'icon-checkbox-checked' : 'icon-checkbox'}}" src="./../../assets/image/{{isCommon == 1 ? 'icon-checkbox-checked' : 'icon-checkbox'}}.png" mode="widthFix" bindtap=""></image>
