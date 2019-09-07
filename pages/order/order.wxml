@@ -1,4 +1,4 @@
-<button class="authorize" open-type="getUserInfo" bindgetuserinfo="userLogin" wx:if="{{!loginStatus}}"></button>
+<button class="authorize" open-type="getUserInfo" bindgetuserinfo="userLogin" wx:if="{{!userInfo.loginStatus}}"></button>
 <swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="rgba(238, 238, 238, 1)" indicator-active-color="#e94215" circular autoplay >
   <swiper-item wx:for="{{swiperImgs}}" wx:key="index">
     <image class="slide-image" src="{{baseURL}}/{{item.path}}" mode="aspectFill" lazy-load="{{true}}" ></image>

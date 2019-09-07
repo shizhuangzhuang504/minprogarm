@@ -1,30 +1,31 @@
-const api = require('./utils/api');
-const request = require('./utils/request');
+const api = require("./utils/api");
+const request = require("./utils/request");
 
 App({
   globalData: {
     userInfo: {},
     shopInfo: {},
-    goodsPrice: ''
+    goodsPrice: ""
   },
-  onLaunch: function () {
+  onLaunch: function() {
     this.getShopList();
     this.getAuthorize();
   },
-  getShopList: function () {
-    api.getLocation()
-    .then(res => {
-      let {latitude, longitude} = res;
-      return request.getShopList({
-        latitude,
-        longitude
+  getShopList: function() {
+    api
+      .getLocation()
+      .then(res => {
+        let { latitude, longitude } = res;
+        return request.getShopList({
+          latitude,
+          longitude
+        });
+      })
+      .then(res => {
+        if (res.length) {
+          this.globalData.shopInfo = res[0];
+        }
       });
-    })
-    .then(res => {
-      if (res.length) {
-       this.globalData.shopInfo = res[0];
-      }
-    });
   },
   getAuthorize: function() {
     //  地理位置授权申请
@@ -32,36 +33,48 @@ App({
     //   scope: 'scope.userLocation'
     // });
   },
-  userLogin: function (getUserInfo) {
-    let {userInfo, rawData, signature} = getUserInfo.detail;
+  userLogin: function(getUserInfo, page) {
+    let { userInfo, rawData, signature } = getUserInfo.detail;
     console.log(userInfo);
     console.log(rawData);
-    let userInfos= JSON.stringify(userInfo);
+    let userInfos = JSON.stringify(userInfo);
     if (!userInfos) {
       return Promise.reject();
     } else {
-      return api.login()
-      .then(res => {
-        let {code} = res;
-        if (code) {
-          return request.userLogin({
-            code,
-            userInfos,
-            rawData,
-            signature
-          });
-        }
-      })
-      .then(res => {
-        if (res) {
-          console.log(res);
-          wx.setStorageSync('Authorization', `${res.token_type} ${res.access_token}`);
-          wx.setStorageSync('session_key', res.session_key);
-          return true;
-        } else {
-          return Promise.reject();
-        }
-      });
+      return api
+        .login()
+        .then(res => {
+          let { code } = res;
+          if (code) {
+            return request.userLogin({
+              code,
+              userInfos,
+              rawData,
+              signature
+            });
+          }
+        })
+        .then(res => {
+          if (res) {
+            console.log(res);
+            let Authorization = `${res.token_type} ${res.access_token}`;
+            let newUserInfo = {
+              Authorization,
+              loginStatus: true,
+              ...userInfo
+            };
+            page &&
+              page.setData({
+                userInfo: newUserInfo
+              });
+            app.globalData["userInfo"] = newUserInfo;
+            wx.setStorageSync("userInfo", newUserInfo);
+            wx.setStorageSync("session_key", res.session_key);
+            return true;
+          } else {
+            return Promise.reject();
+          }
+        });
     }
   }
-})
+});

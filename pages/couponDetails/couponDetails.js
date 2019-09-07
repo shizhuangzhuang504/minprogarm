@@ -1,61 +1,47 @@
-const api = require('./../../utils/api');
-const request = require('./../../utils/request');
+const api = require("./../../utils/api");
+const request = require("./../../utils/request");
+import wxbarcode from '../../utils/index'
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    discount:'',
-    cname:'',
-    sttime:'',
-    entime:'',
-    info:''
+    coupon: {}
   },
 
-  onLoad: function () {
-    console.log(this.changetime(1566027692616));
-    api.getStorage({
-      key: 'coupondetails'
-    })
+  onLoad: function() {
+    api
+      .getStorage({
+        key: "coupondetails"
+      })
       .then(res => {
         console.log(res);
         if (res.data) {
-          let {
-            discount,
-            cname,
-            sttime,
-            entime,
-            info
-          } = res.data;
+          res.data["ruleList"] = (res.data.rule || "").split("\n");
           this.setData({
-            discount,
-            cname,
-            sttime: this.changetime(sttime),
-            entime: this.changetime(entime),
-            info
+            coupon: res.data,
+            barCode: "1234567890123456789"
           });
+          wxbarcode.barcode('barcode', '1234567890123456789', 680, 200);
         }
-      })
+      });
   },
-  onShow: function () {
-
-  },
+  onShow: function() {},
   // 毫秒时间转换
-  changetime:function(num){
+  changetime: function(num) {
     function setDb(num) {
       if (num < 10) {
-        return '0' + num;
+        return "0" + num;
       } else {
-        return '' + num;
+        return "" + num;
       }
     }
-    console.log(num)
-    var time = new Date(num*1000);
-    var year = time.getFullYear();//年
-    var mon = setDb(time.getMonth() + 1);//0 
-    var day = setDb(time.getDate());//24
-    var res = year + "年" + mon + "月" + day + "日"
+    console.log(num);
+    var time = new Date(num * 1000);
+    var year = time.getFullYear(); //年
+    var mon = setDb(time.getMonth() + 1); //0
+    var day = setDb(time.getDate()); //24
+    var res = year + "年" + mon + "月" + day + "日";
     return res;
   }
-})
+});

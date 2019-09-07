@@ -1,4 +1,4 @@
-<button class="authorize" open-type="getUserInfo" bindgetuserinfo="userLogin" wx:if="{{!loginStatus}}"></button>
+<button class="authorize" open-type="getUserInfo" bindgetuserinfo="userLogin" wx:if="{{!userInfo.loginStatus}}"></button>
 <view class="tab">
   <text class="{{type === 'coupon' ? 'active' : ''}}" data-type="coupon" bindtap="chooseType">优惠券</text>
   <text class="{{type === 'card' ? 'active' : ''}}" data-type="card" bindtap="chooseType">优惠储值卡</text>
@@ -16,8 +16,8 @@
           </view>
         </view>
         <view class="col">
-          <view class="name">{{item.cname}}</view>
-          <view class="date">{{item.sttime}} —— {{item.entime}}</view>
+          <view class="name">{{item.name}}</view>
+          <view class="date">{{item.start_time}} — {{item.end_time}}</view>
         </view>
       </view>
       <view class="desc">{{item.info}}</view>

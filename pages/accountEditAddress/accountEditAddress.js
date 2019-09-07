@@ -9,7 +9,7 @@ Page({
     address: '',
     door: '',
     tag: '',
-    isCommon: 0,
+    is_comment: 0,
     id: '',
     uid: '',
     controType:1
@@ -17,15 +17,15 @@ Page({
   onLoad: function (opt) {
     console.log(opt)
     if (Object.keys(opt).length !== 0) {
-      let { realname, sex, mobile, address, door, biao, com, id, uid, controType } = opt;
+      let { realname, sex, mobile, address, door, tag, com, id, uid, controType } = opt;
       this.setData({
         realname,
         sex,
         mobile,
         address,
         door,
-        tag: biao,
-        isCommon: com,
+        tag: tag,
+        is_comment: com,
         id,
         uid,
         controType
@@ -55,12 +55,16 @@ Page({
   },
   chooseCommon: function () {
     this.setData({
-      isCommon: this.data.isCommon === 0 ? 1 : 0
+      is_comment: this.data.is_comment === 0 ? 1 : 0
     });
   },
   saveAddress: function (e) {
+<<<<<<< HEAD
     console.log(e);
     let { realname, sex, mobile, address, door, biao, com, tag } = e.detail.value;
+=======
+    let { realname, sex, mobile, address, door, tag, com  } = e.detail.value;
+>>>>>>> 20190909_zb_feat
     if (realname === '') {
       api.showToast({
         title: '联系人不能为空',
@@ -102,7 +106,7 @@ Page({
         request.addAddress({
           ...e.detail.value
         }).then(res => {
-          if (res.code == 0) {
+          if (res.code === 0) {
             api.showToast({
               title: '保存成功',
               icon: 'none',
@@ -118,7 +122,7 @@ Page({
         request.updateAddress({
           ...e.detail.value
         }).then(res => {
-          if (res.code) {
+          if (res.code === 0) {
             api.showToast({
               title: '编辑成功',
               icon: 'none',

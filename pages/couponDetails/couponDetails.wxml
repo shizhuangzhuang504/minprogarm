@@ -1,20 +1,23 @@
 <view class="container">
   <view>
-    <text class=" discount ">{{discount}}</text>
-    <text class="discount ">{{type ? "元":"折"}}</text>
+    <text class=" discount ">{{coupon.discount}}</text>
+    <text class="discount ">{{coupon.type ? "元":"折"}}</text>
     <text class="type ">优惠券</text>
   </view>
-  <view class="title ">{{cname}}</view>
+  <view class="title ">{{coupon.name}}</view>
   <view class="term ">
     <view class="term-title ">有效期：</view>
     <view>
-      <view>从 {{sttime}}</view>
-      <view class="end ">至 {{entime}}</view>
+      <view>从 {{coupon.start_time}}</view>
+      <view class="end ">至 {{coupon.end_time}}</view>
     </view>
   </view>
   <view class="term ">使用规则：</view>
-  <view class="rule-details ">{{info}}</view>
-    <view class="term ">优惠券条码：</view>
-    <!-- <image src=" "></image> -->
-    <view class="name ">JFJFJJ404D</view>
+  <view class="rule-details ">{{coupon.rule}}</view>
+  <view class="term ">优惠券条码：</view>
+  <!-- <image src=" "></image> -->
+  <view class="name ">
+    <canvas canvas-id="barcode" class='barcode'></canvas>
+    <view>{{barCode}}</view>
+  </view>
 </view>

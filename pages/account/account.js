@@ -1,63 +1,54 @@
-const api = require('./../../utils/api');
+const api = require("./../../utils/api");
 // const request = require('./../../utils/request');
 const app = getApp();
 
 Page({
   data: {
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    loginStatus: false,
-    avatarUrl: '',
-    nickName: ''
+    canIUse: wx.canIUse("button.open-type.getUserInfo"),
+    avatarUrl: "",
+    nickName: ""
   },
-  onLoad: function() {
-    
-  },
+  onLoad: function() {},
   onShow: function() {
-    this.checkLogin();
-  },
-  checkLogin: function() {
-    let Authorization = wx.getStorageSync('Authorization');
+    let userInfo = wx.getStorageSync("userInfo");
     this.setData({
-      loginStatus: Authorization ? true : false
+      userInfo
     });
-    if (Authorization) {
-      this.getUserInfo();
-    }
   },
+  checkLogin: function() {},
   userLogin: function(e) {
-    app.userLogin(e)
-      .then(res => {
-        if (res) {
-          this.onShow();
-        }
-      });
+    app.userLogin(e, this).then(res => {
+      if (res) {
+        this.onShow();
+      }
+    });
   },
   bindGetUserInfo(e) {
-    console.log(e.detail.userInfo)
+    console.log(e.detail.userInfo);
+    app.userLogin(e, this).then(res => {
+      if (res) {
+      }
+    });
   },
   getUserInfo: function() {
-    api.getUserInfo()
-      .then(res => {
-        console.log(res)
-        let {
-          avatarUrl,
-          nickName
-        } = res.userInfo;
-        this.setData({
-          avatarUrl,
-          nickName
-        });
-        // request.getMobile({
-        //   ...res
-        // }).then(res => {
-
-        // })
+    api.getUserInfo().then(res => {
+      console.log(res);
+      let { avatarUrl, nickName } = res.userInfo;
+      this.setData({
+        avatarUrl,
+        nickName
       });
+      // request.getMobile({
+      //   ...res
+      // }).then(res => {
+
+      // })
+    });
   },
-  tocoupon:function(){
+  tocoupon: function() {
     wx.setStorageSync("gocard", "card");
     wx.switchTab({
-      url:"../coupon/coupon"
-    })
+      url: "../coupon/coupon"
+    });
   }
-})
+});
