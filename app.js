@@ -47,7 +47,7 @@ App({
           if (code) {
             return request.userLogin({
               code,
-              userInfos,
+              userInfo:userInfos,
               rawData,
               signature
             });
@@ -55,6 +55,7 @@ App({
         })
         .then(res => {
           if (res) {
+            wx.showTabBar({})
             let Authorization =  res.access_token ?  `${res.token_type} ${res.access_token}`: '';
             let newUserInfo = {
               Authorization,

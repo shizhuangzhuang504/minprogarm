@@ -99,8 +99,9 @@ Page({
       })
       .then(res => {
         if (res.length) {
+          console.log('揍你',res)
           this.setData({
-            localSendprice: res[0].sendprice,
+            localSendprice: res,
           });
         }
       });

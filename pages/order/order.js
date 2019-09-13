@@ -141,7 +141,6 @@ Page({
     query
       .select(".list")
       .boundingClientRect(function(rect) {
-        console.log(rect.height);
         that.setData({
           eleFoodHeight: 90
         });
@@ -260,7 +259,6 @@ Page({
   },
   getUser: function() {
     request.getUserInfo().then(res => {
-      console.log(res);
       this.setData({
         money: res.money
       });

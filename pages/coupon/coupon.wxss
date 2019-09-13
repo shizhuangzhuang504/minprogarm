@@ -92,7 +92,8 @@
 .coupon-list .item .name {
   color: #333;
   font-size: 30rpx;
-  text-indent: -10rpx;
+  /* text-indent: -10rpx; */
+  margin-left: 8rpx;
 }
 .coupon-list .item .date {
   margin-top: 24rpx;
@@ -232,4 +233,13 @@
   font-size: 30rpx;
   line-height: 56rpx;
   text-align: center;
+}
+.waiting-info {
+  width: 100%;
+  height: 600rpx;
+  margin-top:100px;
+}
+.waiting-info img {
+  width: 100%;
+  height: 100%
 }

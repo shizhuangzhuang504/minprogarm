@@ -60,7 +60,6 @@ Component({
         goodsPrice:app.globalData.goodsPrice,
         isSelect: app.globalData.isSelect
       })
-      console.log(app.globalData);
     },
     hide: () => {}
   },

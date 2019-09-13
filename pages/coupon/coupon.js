@@ -65,11 +65,10 @@ Page({
   },
   getCouponList: function() {
     request.getCouponList().then(res => {
-      console.log(res.data.list_data);
       if (res.code === 0) {
         let { list_data } = res.data;
         this.setData({
-          couponList: list_data
+          couponList: res.data
         });
       }
     });

@@ -68,11 +68,11 @@
             <image class="icon-weixinpay" src="./../../assets/image/icon-weixinpay.png" mode="aspectFill"></image>
             微信
           </view>
-          <view class="radio" data-pay-type="{{1}}" bindtap="choosePayType">
+          <!-- <view class="radio" data-pay-type="{{1}}" bindtap="choosePayType">
             <image class="{{payType == 1 ? 'icon-radio-1-checked' : 'icon-radio-1'}}" src="./../../assets/image/{{payType == 1 ? 'icon-radio-1-checked' : 'icon-radio-1'}}.png" mode="widthFix"></image>
             <image class="icon-card-red" src="./../../assets/image/icon-card-red.png" mode="aspectFill"></image>
             储值卡
-          </view>
+          </view> -->
         </view>
         <view class="row" wx:if="{{payType == 1}}">
           <view>储值卡余额:</view>

@@ -24,7 +24,6 @@ Page({
     });
   },
   bindGetUserInfo(e) {
-    console.log(e.detail.userInfo);
     app.userLogin(e, this).then(res => {
       if (res) {
       }
@@ -32,7 +31,6 @@ Page({
   },
   getUserInfo: function() {
     api.getUserInfo().then(res => {
-      console.log(res);
       let { avatarUrl, nickName } = res.userInfo;
       this.setData({
         avatarUrl,

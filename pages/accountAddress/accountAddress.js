@@ -22,6 +22,10 @@ Page({
           addressList: res.data,
           curAddress: arr
         });
+      } else {
+        this.setData({
+          addressList: [],
+        });
       }
     });
   },
@@ -75,7 +79,7 @@ Page({
               ..._this.data.deleteObj
             })
             .then(res => {
-              if (res.status_code) {
+              if (res.code == 0) {
                 api
                   .showToast({
                     title: "删除成功",

@@ -26,7 +26,7 @@
   </view>
 </view>
 <view class="card" hidden="{{type !== 'card'}}">
-  <view class="panel">
+  <!-- <view class="panel">
     <view class="row">
       <view class="col">
         <image class="logo-white" src="./../../assets/image/logo-white.png" mode="aspectFill" ></image>
@@ -68,5 +68,8 @@
     <view class="desc" wx:if="{{rebateList.length}}">
       <view wx:for="{{rebateList}}" wx:key="{{item.id}}">{{item.min}}~{{item.max}}赠送{{item.piont}}%</view>
     </view>
+  </view> -->
+  <view class="waiting-info">
+      <image src="./../../assets/image/waiting.png" mode="aspectFill" ></image>
   </view>
 </view>

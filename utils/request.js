@@ -56,16 +56,17 @@ exports.userLogout = () => {
   });
 };
 
+// 首页轮播图
 exports.getSwiper = () => {
   return get({
-    path: "/api/wechat/article/comment",
+    path: "/api/wechat/article/home_images",
     data: {}
   });
 };
-
+// 获取店铺信息
 exports.getShopList = data => {
-  return post({
-    path: "/api/wechat/article/getrlist",
+  return get({
+    path: "/api/wechat/lately_restaurant",
     data: {
       ...data
     }
@@ -155,7 +156,7 @@ exports.getMobile = data => {
 
 exports.getUserInfo = () => {
   return get({
-    path: "/api/wechat/user/getuinfo",
+    path: "/api/wechat/user/info",
     data: {}
   });
 };

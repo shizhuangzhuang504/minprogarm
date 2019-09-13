@@ -1,4 +1,4 @@
-<button class="authorize" open-type="getUserInfo" bindgetuserinfo="userLogin" wx:if="{{!userInfo.loginStatus}}"></button>
+
 <swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="rgba(238, 238, 238, 1)" indicator-active-color="#e94215" circular autoplay>
   <swiper-item wx:for="{{swiperImgs}}" wx:key="index">
     <image class="slide-image" src="{{baseURL}}/{{item.path}}" mode="aspectFill" lazy-load="{{true}}"></image>
@@ -34,13 +34,13 @@
     <index-goods class="goods-item" bind:myevent='onMyevent' wx:for="{{hotList}}" wx:key="{{item.id}}" goods="{{item}}" bindgoodscalc="goodsCalc"></index-goods>
   </view>
 </view>
-<view class="free-wrap" hidden="{{iscoupon}}">
+<!-- <view class="free-wrap" hidden="{{iscoupon}}">
   <view class="free" bindtap="receivecoupon">
     <text class="cancel" catchtap="cancel">x</text>
     <image src="/assets/image/coupon.png"></image>
     <text class="date">2019年8月16日  —  2019年9月02日</text>
   </view>
-</view>
+</view> -->
 <view class="free-wrap" wx:if='{{showFreeCoupon}}' bindtouchmove='stopScroll'>
   <view class='free-coupon'>
     <view class='free-info'>
@@ -49,16 +49,30 @@
       <view class='coupon-list'>
         <view class='coupon-list__item' wx:for="{{freeConponList}}" wx:for-item="item" wx:for-index='index' wx:key='index'>
           <view class='coupon-tag'>
-            <view class='coupon-discount'>{{item.discount || '8.5折'}}</view>
-            <view class='coupon-name'>{{item.variety_name}}</view>
-            <view class='coupon-time'>{{item.start_time}}-{{item.end_time}}</view>
+            <view class='coupon-name'>首次到店，免费享匠丰{{item.variety_name}}一碗</view>
+            <view class='coupon-time'>有效期: {{item.start_time}}至{{item.end_time}}</view>
           </view>
         </view>
       </view>
-      <view class='coupon-btn' bindtap='getCoupon'>立即领取</view>
+      <view class="btn-wapper">
+        <button class='coupon-btn' open-type="share">邀请好友</button>
+        <view class='coupon-btn receive-btn' bindtap='getCoupon'>立即领取</view>
+      </view>
     </view>
   </view>
 </view>
+<!-- 用户授权弹框 -->
+<view class="free-wrap" bindtouchmove='stopScroll' wx:if="{{!userInfo.loginStatus}}">
+  <view class='free-coupon'>
+    <view class='auth-info'>
+      <image class="auth-bg" src='/assets/image/login-icon.png'></image>
+      <view class="auth-wapper">
+        <button class="authoriz-btn" open-type="getUserInfo" bindgetuserinfo="userLogin">了解详情</button>
+      </view>
+    </view>
+  </view>
+</view>
+
 <view hidden="{{!isSelect}}">
   <calc-car class="calc-car" address="{{address}}" goodsPrice="{{goodsPrice}}" orderTotalPrice="{{orderTotalPrice}}" sendprice="{{sendprice}}" discount="{{discount}}" goodsbprice="{{goodsbprice}}" diffPrice="{{diffPrice}}" orderGoodsList="{{orderGoodsList}}"></calc-car>
 </view>

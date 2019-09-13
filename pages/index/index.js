@@ -50,8 +50,9 @@ Page({
     });
     this.getLoacalAddress();
     if (userInfo.Authorization) {
+      wx.showTabBar({})
       request.getFreeCoupon().then(res => {
-        console.log(res);
+        console.log('cessss',res)
         if (res.data.variety_name) {
           this.setData({
             freeConponList: [res.data],
@@ -59,6 +60,8 @@ Page({
           });
         }
       });
+    } else {
+      wx.hideTabBar({})
     }
   },
   cancel: function() {
@@ -73,7 +76,6 @@ Page({
         key: "address"
       })
       .then(res => {
-        console.log('cesss',res);
         if (res.data) {
           this.setData({
             address: res.data
@@ -100,11 +102,14 @@ Page({
     app.userLogin(e, this).then(res => {
       if (res) {
         request.getFreeCoupon().then(res => {
-          console.log(res);
           if (res.data.variety_name) {
             this.setData({
               freeConponList: [res.data],
               showFreeCoupon: true
+            });
+          } else {
+            wx.switchTab({
+              url: "/pages/coupon/coupon"
             });
           }
         });
@@ -132,17 +137,15 @@ Page({
         });
       })
       .then(res => {
-        if (res.length) {
           this.setData({
-            localSendprice: res[0].sendprice,
-            shopName: res[0].rname,
-            shopDistance: res[0].distance,
-            shopDistance: Math.floor(res[0].distance / 1000)
-            // isOutRange: res[0].service
+            localSendprice: res.data.sendprice,
+            shopName: res.data.name,
+            shopDistance: res.data.distance,
+            shopDistance: Math.floor(res.data.distance / 1000),
+            isOutRange: res.data.status
           });
-          wx.setStorageSync("isOutRange", res[0].service);
-          wx.setStorageSync("shop", res[0]);
-        }
+          wx.setStorageSync("isOutRange", res.service);
+          wx.setStorageSync("shop", res);
       });
   },
   // getShop: function () {
@@ -296,8 +299,7 @@ Page({
   },
   getCoupon() {
     request.receiveCouponList().then(res => {
-      console.log(res);
-      if (res.code === 1) {
+      if (res.code === 0) {
         api
           .showToast({
             title: "领取成功",
@@ -318,8 +320,5 @@ Page({
   //页面隐藏后存储订单信息
   onHide: function() {
     wx.setStorageSync("orderGoodsList", this.data.orderGoodsList);
-  },
-  stopScroll(e) {
-    console.log(e);
   }
 });
