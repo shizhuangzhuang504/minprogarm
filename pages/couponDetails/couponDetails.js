@@ -15,7 +15,6 @@ Page({
         key: "coupondetails"
       })
       .then(res => {
-        console.log(res);
         if (res.data) {
           res.data["ruleList"] = (res.data.rule || "").split("\n");
           this.setData({
@@ -36,7 +35,6 @@ Page({
         return "" + num;
       }
     }
-    console.log(num);
     var time = new Date(num * 1000);
     var year = time.getFullYear(); //年
     var mon = setDb(time.getMonth() + 1); //0

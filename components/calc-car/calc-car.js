@@ -106,7 +106,6 @@ Component({
     getAddress: function() {
       request.getAddress()
         .then(res => {
-          console.log(res)
           if (res.data.length) {
             this.setData({
               addressList: res.data,

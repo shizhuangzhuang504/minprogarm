@@ -52,7 +52,6 @@ Page({
         key: "orderGoodsList"
       })
       .then(res => {
-        console.log(res);
         this.setData({
           orderGoodsList: res.data
         });
@@ -67,7 +66,6 @@ Page({
         key: "address"
       })
       .then(res => {
-        console.log(res);
         if (res.data) {
           this.setData({
             address: res.data
@@ -76,7 +74,6 @@ Page({
       })
       .catch(err => {
         this.getAddress();
-        console.log(err, "cccc");
       });
   },
 
@@ -131,7 +128,6 @@ Page({
     query
       .select(".head")
       .boundingClientRect(function(rect) {
-        // console.log(rect.height);
         that.setData({
           eleCateTitleHeight: 38
         });
@@ -196,7 +192,6 @@ Page({
         mid: this.data.mid
       })
       .then(res => {
-        console.log(res);
         if (res.length) {
           this.setData(
             {

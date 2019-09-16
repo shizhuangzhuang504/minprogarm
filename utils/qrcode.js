@@ -742,7 +742,6 @@ var QR = (function () {
             canvas = canvas || _canvas;
 
             if (!canvas) {
-                console.warn('No canvas provided to draw QR code in!')
                 return;
             }
 

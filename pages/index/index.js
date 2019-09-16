@@ -9,7 +9,7 @@ Page({
     showFreeCoupon: false,
     swiperImgs: [],
     indicatorDots: true,
-    shopName: "",
+    shopName: "新华店",
     shopDistance: "",
     isOutRange: 1,
     hotList: [],
@@ -31,7 +31,7 @@ Page({
   onLoad: function(option) {
     this.getSwiper();
     this.getHotList();
-    this.getShopList();
+    // this.getShopList();
     if (Object.keys(option).length !== 0) {
       this.setData({
         iscoupon: !this.data.iscoupon
@@ -52,7 +52,6 @@ Page({
     if (userInfo.Authorization) {
       wx.showTabBar({})
       request.getFreeCoupon().then(res => {
-        console.log('cessss',res)
         if (res.data.variety_name) {
           this.setData({
             freeConponList: [res.data],
@@ -107,10 +106,6 @@ Page({
               freeConponList: [res.data],
               showFreeCoupon: true
             });
-          } else {
-            wx.switchTab({
-              url: "/pages/coupon/coupon"
-            });
           }
         });
       }
@@ -149,13 +144,11 @@ Page({
       });
   },
   // getShop: function () {
-  //   console.log(111);
   //   api.getStorage({
   //     key: 'shop'
   //   })
   //   .then(res => {
   //     if (res.data) {
-  //       console.log(res);
   //       this.setData({
   //         shopName: res.data.rname,
   //         shopDistance: res.data.distance,
@@ -164,6 +157,21 @@ Page({
   //     }
   //   });
   // },
+  getphonenumber: function(e) {
+    let { iv, encryptedData } = e.detail;
+    request
+      .getMobile({
+        iv,
+        encryptData: encryptedData,
+        session_key: wx.getStorageSync("session_key"),
+        type: 0
+      })
+      .then(res => {
+        if (res) {
+          this.getCoupon();
+        }
+      });
+  },
   order: function() {
     if (wx.getStorageSync("isOutRange")) {
       api.switchTab({
@@ -189,7 +197,6 @@ Page({
   getHotList: function() {
     request.getHotList().then(res => {
       if (res.length) {
-        console.log(res);
         this.setData({
           hotList: res
         });
@@ -299,7 +306,7 @@ Page({
   },
   getCoupon() {
     request.receiveCouponList().then(res => {
-      if (res.code === 0) {
+      if (res.code === 0 || res.code === 1) {
         api
           .showToast({
             title: "领取成功",

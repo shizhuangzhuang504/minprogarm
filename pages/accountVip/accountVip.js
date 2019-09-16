@@ -14,7 +14,6 @@ Page({
   },
   getUser: function() {
     request.getUserInfo().then(res => {
-      console.log(res);
       this.setData({
         mobile: res.mobile,
         consume: res.consume
@@ -32,7 +31,6 @@ Page({
   },
   getphonenumber: function(e) {
     let { iv, encryptedData } = e.detail;
-    console.log({ iv, encryptedData });
     wx.checkSession({
       success() {
         console.log("session_key 未过期，并且在本生命周期一直有效");
@@ -49,12 +47,10 @@ Page({
         type: 0
       })
       .then(res => {
-        console.log(res);
         if (res) {
           this.setData({
             mobile: res.mobile
           });
-          console.log(11);
         }
       });
   }

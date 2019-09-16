@@ -9,8 +9,7 @@ App({
   },
   onLaunch: function() {
     this.globalData["userInfo"] =  wx.getStorageSync("userInfo");
-    this.getShopList();
-    this.getAuthorize();
+    // this.getShopList();
   },
   getShopList: function() {
     api
@@ -27,12 +26,6 @@ App({
           this.globalData.shopInfo = res[0];
         }
       });
-  },
-  getAuthorize: function() {
-    //  地理位置授权申请
-    // api.authorize({
-    //   scope: 'scope.userLocation'
-    // });
   },
   userLogin: function(getUserInfo, page) {
     let { userInfo, rawData, signature } = getUserInfo.detail;

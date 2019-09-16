@@ -78,7 +78,6 @@ Component({
     },
     //跳转商品详情
     gogoodsdetail: function() {
-      console.log(this.properties.goods)
       var data = JSON.stringify(this.properties.goods);
       wx.navigateTo({
         url: '/pages/goods-details/goods-details?data='+data,

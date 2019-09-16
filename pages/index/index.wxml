@@ -11,7 +11,7 @@
   <view class="shop-name">{{shopName ? shopName : ''}}</view>
   <view class="distance">
     <image src="/assets/image/icon-location-1.png"></image>
-    <text>{{shopDistance ? '附近门店距您' + shopDistance + 'km' : ''}}</text>
+    <text>抚顺市顺城区新华大街2号楼北门市4号</text>
   </view>
   <view class="order-btn {{isOutRange === 0? 'disabled' : 'usable'}}" bindtap="order">
     <view>{{isOutRange === 0 ? '超出服务范围' : '马上点餐'}}</view>
@@ -45,18 +45,9 @@
   <view class='free-coupon'>
     <view class='free-info'>
       <image class="coupon-close" bindtap='closeCoupon' src='/assets/image/coupon_close.png'></image>
-      <image class="coupon-bg" src='/assets/image/coupon_bg.png'></image>
-      <view class='coupon-list'>
-        <view class='coupon-list__item' wx:for="{{freeConponList}}" wx:for-item="item" wx:for-index='index' wx:key='index'>
-          <view class='coupon-tag'>
-            <view class='coupon-name'>首次到店，免费享匠丰{{item.variety_name}}一碗</view>
-            <view class='coupon-time'>有效期: {{item.start_time}}至{{item.end_time}}</view>
-          </view>
-        </view>
-      </view>
-      <view class="btn-wapper">
-        <button class='coupon-btn' open-type="share">邀请好友</button>
-        <view class='coupon-btn receive-btn' bindtap='getCoupon'>立即领取</view>
+      <image class="coupon-bg" src='/assets/image/free.png'></image>
+      <view class="auth-wapper">
+        <button class="authoriz-btn" open-type="getPhoneNumber"  bindgetphonenumber="getphonenumber"></button>
       </view>
     </view>
   </view>
@@ -66,8 +57,8 @@
   <view class='free-coupon'>
     <view class='auth-info'>
       <image class="auth-bg" src='/assets/image/login-icon.png'></image>
-      <view class="auth-wapper">
-        <button class="authoriz-btn" open-type="getUserInfo" bindgetuserinfo="userLogin">了解详情</button>
+      <view class="authinfo-wapper">
+        <button class="authorize-info" open-type="getUserInfo" bindgetuserinfo="userLogin">微信授权</button>
       </view>
     </view>
   </view>

@@ -27,7 +27,6 @@ Page({
       request.vip()
         .then(res => {
           if (res.length) {
-            console.log(res);
             wx.showToast({
               icon: 'success',
               title: '领取成功'

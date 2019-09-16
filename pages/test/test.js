@@ -23,7 +23,6 @@ Page({
       dataType: JSON,
       success: res => {
         let getgoods = JSON.parse(res.data)
-        console.log(getgoods)
         this.setData({ goods: getgoods }, () => this.setFoodListAreaHeight())
         wx.hideLoading()
       }
@@ -56,7 +55,6 @@ Page({
     let heightCount = 0
     setTimeout(() => {
       this.data.goods.forEach((item, index) => {
-        //console.log(item.items.length * this.data.eleFoodHeight);
         heightCount += item.items.length * this.data.eleFoodHeight + this.data.eleCateTitleHeight
         foodAreaHeight.push(heightCount)
       })
@@ -72,7 +70,6 @@ Page({
 	 * @param {*} e 
 	 */
   scrollToCategory(e) {
-    console.log(e.currentTarget.dataset);
     let idx = e.currentTarget.dataset.index
     let foodcount = e.currentTarget.dataset.foodcount
     this.setData({
@@ -86,7 +83,6 @@ Page({
   foodListScrolling(event) {
     let scrollTop = event.detail.scrollTop
     let foodAreaHeight = this.data.foodAreaHeight
-    console.log(scrollTop);
     foodAreaHeight.forEach((item, index) => {
       if (scrollTop >= foodAreaHeight[index] && scrollTop < foodAreaHeight[index + 1]) {
         this.setData({ cateListActiveIndex: index })
@@ -100,7 +96,6 @@ Page({
 	 */
   bindImgPreView(e) {
     let preImageUrl = e.target.dataset.url
-    console.log(preImageUrl)
     this.setData({ preImageUrl, hidePreview: false })
   },
   hideIMgpreview() {
@@ -115,7 +110,6 @@ Page({
     let goods = this.data.goods
     let _key = `goods[${dataset.cidx}].items[${dataset.fidx}].count`
     let _o = goods[dataset.cidx].items[dataset.fidx]
-    console.log(dataset);
     if (!_o.count) {
       this.setData({
         [_key]: 1
@@ -132,7 +126,6 @@ Page({
     let goods = this.data.goods
     let _key = `goods[${dataset.cidx}].items[${dataset.fidx}].count`
     let _o = goods[dataset.cidx].items[dataset.fidx]
-    console.log(dataset);
     if (_o.count && _o.count > 0) {
       this.setData({
         [_key]: _o.count - 1
@@ -177,7 +170,6 @@ Page({
         }
       })
     })
-    console.log(JSON.stringify(_submitGoods))
     //放入store
     wx.setStorage({
       key: 'orderGoods',

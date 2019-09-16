@@ -24,9 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options);
     let res = JSON.parse(options.data);
-    console.log(res);
     this.setData({
       goods: res,
       cname: res.cname,
@@ -40,13 +38,11 @@ Page({
       goods: this.data.detailArr
     })
     this.getShopList();
-    console.log(this.data.goods);
     //获取缓存内的订单信息
     // api.getStorage({
     //     key: 'orderGoodsList'
     //   })
     //   .then(res => {
-    //     console.log(res);
     //     this.setData({
     //       orderGoodsList: res.data
     //     })
@@ -61,7 +57,6 @@ Page({
       key: 'address'
     })
       .then(res => {
-        console.log(res)
         if (res.data) {
           this.setData({
             address: res.data
@@ -70,7 +65,6 @@ Page({
       })
       .catch(err => {
         this.getAddress();
-        console.log(err,'cccc');
       });
   },
   getAddress: function () {
@@ -99,7 +93,6 @@ Page({
       })
       .then(res => {
         if (res.length) {
-          console.log('揍你',res)
           this.setData({
             localSendprice: res,
           });
@@ -172,7 +165,6 @@ Page({
   },
   //获取备注的内容
   bindblur: function(e) {
-    console.log(e.detail.value)
     this.setData({
       remark: e.detail.value
     })

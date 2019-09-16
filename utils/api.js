@@ -35,11 +35,6 @@ let apiSpace = {
   media: [
     'previewImage'
   ],
-  location: [
-    'getLocation',
-    'openLocation',
-    'chooseLocation'
-  ],
   share: [
     'showShareMenu'
   ],

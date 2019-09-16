@@ -14,7 +14,6 @@ Page({
   },
   onLoad: function() {
     let couponCard = app.globalData.couponCard;
-    console.log(app.globalData.couponCard);
     if (couponCard) {
       this.setData({
         type: "card"
@@ -29,7 +28,6 @@ Page({
         key: "gocard"
       })
       .then(res => {
-        console.log(res);
         this.setData({
           type: res.data
         });
@@ -158,7 +156,6 @@ Page({
           money: number
         })
         .then(res => {
-          console.log(res);
           if (res.status_code) {
             return api.requestPayment({
               timeStamp: res.data.timestamp,

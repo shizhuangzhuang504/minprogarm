@@ -40,7 +40,6 @@ Page({
   getOrderList: function () {
     request.getOrderList()
     .then(res => {
-      console.log(res);
       if (res.data.length) {
         this.setData({
           allList: res.data
