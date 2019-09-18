@@ -16,6 +16,7 @@
     "pages/accountFeedback/accountFeedback",
     "pages/free/free",
     "pages/startup/startup",
+    "pages/login/login",
     "components/calc-car/calc-car"
   ],
   "window": {

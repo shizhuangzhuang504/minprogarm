@@ -5,7 +5,8 @@ App({
   globalData: {
     userInfo: {},
     shopInfo: {},
-    goodsPrice: ""
+    goodsPrice: "",
+    isResiter: false
   },
   onLaunch: function() {
     this.globalData["userInfo"] =  wx.getStorageSync("userInfo");

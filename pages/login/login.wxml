@@ -1,0 +1,32 @@
+<view class="header-wapper">
+  <view class="img-content">
+     <image class="img-icon" src="/assets/image/header-icon.png"></image>
+  </view>
+</view>
+<view>
+  <view class="login-title">注册成为匠丰会员，畅享优惠权益。</view>
+  <view class="intro-info">
+    <view class="item">领取免费券，到店使用</view>
+    <view class="item">会员储值享折扣优惠</view>
+    <view class="item">外卖点餐一触即达</view>
+  </view>
+</view>
+<view class="btn-wapper">
+     <button class="authorize-info" open-type="getUserInfo" bindgetuserinfo="userLogin">微信快速注册</button>
+     <button class="give-btn" bindtap="giveResiter">放弃注册</button>
+</view>
+<view class="free-wrap" bindtouchmove='stopScroll' wx:if="{{userInfo.loginStatus}}">
+  <view class='free-coupon'>
+    <view class='auth-info'>
+      <view class="logo-icon">
+        <image class="img-icon" src="/assets/image/phone-icon.png"></image>
+      </view>
+      <view class="phone-title">注册手机号</view>
+      <view class="phone-info">到店可直接报手机号抵用优惠券</view>
+      <view class="agree-btn">
+        <view class="refuse" bindtap="refuseGetPhone">拒绝</view>
+        <button class="agree" open-type="getPhoneNumber"  bindgetphonenumber="getphonenumber">同意</button>
+      </view>
+    </view>
+  </view>
+</view>
