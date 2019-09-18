@@ -8,14 +8,32 @@
 }
 .tab {
   position: relative;
-  border-bottom: 3rpx solid #eee;
+  border-bottom: 3rpx solid #ebebeb;
   padding: 34rpx 0 1rpx;
   white-space: nowrap;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  height: 176rpx;
 }
-.tab .scroll {
+.tab .tab-list {
+  flex: 1;
+  text-align: center;
+}
+.tab .tab-list image {
+  width: 84rpx;
+  height: 84rpx;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 12rpx;
+}
+.tab .tab-list text {
+  font-size: 28rpx;
+}
+/* .tab .scroll {
   box-sizing: border-box;
-  padding-left: 194rpx;
   width: 100%;
   overflow-x: scroll;
 }
@@ -33,13 +51,13 @@
   margin: 0;
   width: 194rpx;
   background: #fff;
-}
+} */
 .tab .tab-nav.active {
   border-color: #e94215;
 }
 .goods {
   position: absolute;
-  top: 487rpx;
+  top: 601rpx;
   left: 0;
   right: 0;
   bottom: 0;
@@ -52,26 +70,39 @@
   left: 0;
   bottom: 0;
   z-index: 100;
-  border-right: 3rpx solid #eee;
+  /* border-right: 3rpx solid #eee; */
   width: 194rpx;
   background: #f5f5f5;
 }
 .goods .aside .item {
-  border-left: 7rpx solid transparent;
   height: 92rpx;
   color: #333;
-  font-size: 32rpx;
+  font-size: 28rpx;
   line-height: 92rpx;
-  text-align: center;
+  padding-left: 50rpx;
+  position: relative;
+  border-bottom: 2rpx solid #ffffff;
 }
 .goods .aside .item:last-of-type {
   margin-bottom: 125rpx;
 }
-.goods .aside .item.active {
-  border-color: #e94215;
+.goods .aside .triangle {
+  width: 10rpx;
+  height: 10rpx;
+  top: 34rpx;
+  left: 24rpx;
+  position: absolute;
+}
+.goods .aside .active {
   background: #fff;
-  font-weight: 600;
-  color:#000;
+}
+.goods .aside  .active .triangle text {
+  float: left;
+  width: 0; 
+  height: 0;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #ff5926;
 }
 .goods .list-wrap {
   position: absolute;

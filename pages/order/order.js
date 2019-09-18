@@ -27,7 +27,25 @@ Page({
     payType: 0,
     money: 0,
     listViewScrollTop: 0,
-    foodAreaHeight: [0]
+    foodAreaHeight: [0],
+    tabList: [
+      {
+        img: './../../assets/image/danpin.png',
+        name: '畅销单品'
+      },
+      {
+        img: './../../assets/image/mizhi.png',
+        name: '秘制大骨'
+      },
+      {
+        img: './../../assets/image/miantiao.png',
+        name: '匠丰面条'
+      },
+      {
+        img: './../../assets/image/taocan.png',
+        name: '超值套餐'
+      }
+    ]
   },
   onTabItemTap(item) {
     app.globalData.isConfirm = false;
@@ -157,6 +175,28 @@ Page({
         foodAreaHeight
       });
     }, 100);
+  },
+  // 菜单栏点击事件滚动到右边的高度 ---  单个判断
+  choseMenu (e) {
+    let { index } = e.currentTarget.dataset;
+    let idx = e.currentTarget.dataset.index;
+    if (Number(idx) === 0) {
+      this.setData({
+        listViewScrollTop: this.data.foodAreaHeight[0]
+      });
+    } else if (Number(idx) === 1) {
+      this.setData({
+        listViewScrollTop: this.data.foodAreaHeight[2]
+      });
+    } else if (Number(idx) === 2) {
+      this.setData({
+        listViewScrollTop: this.data.foodAreaHeight[1]
+      });
+    } else if (Number(idx) === 3) {
+      this.setData({
+        listViewScrollTop: this.data.foodAreaHeight[5]
+      });
+    }
   },
   // 菜单栏点击事件滚动到右边的高度
   chooseMenu: function(e) {

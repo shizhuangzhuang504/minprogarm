@@ -4,15 +4,23 @@
     <image class="slide-image" src="{{baseURL}}/{{item.path}}" mode="aspectFill" lazy-load="{{true}}" ></image>
   </swiper-item>
 </swiper >
+<!-- 新加导航 -->
 <view class="tab">
-  <text class="tab-nav" id="tab-nav">商品类型</text>
+  <view class="tab-list" wx:for="{{tabList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="choseMenu">
+    <image src="{{item.img}}"></image>
+    <text>{{item.name}}</text>
+  </view>
+  <!-- <text class="tab-nav" id="tab-nav">商品类型</text>
   <view class="scroll">
     <text class="tab-nav {{menuIndex === index ? 'active' : ''}} " wx:for="{{menuList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="chooseMenu">{{item.name}}</text>
-  </view>
+  </view> -->
 </view>
 <view class="goods">
   <view class="aside">
-    <view class="item {{menuIndex === index ? 'active' : ''}}" wx:for="{{menuList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="chooseMenu">{{item.name}}</view>
+    <view class="item {{menuIndex === index ? 'active' : ''}} " wx:for="{{menuList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="chooseMenu">
+      <view class="triangle"><text></text></view>
+      {{item.name}}
+    </view>
   </view>
   <scroll-view class="list-wrap" scroll-y scroll-top="{{listViewScrollTop}}"  bindscroll="foodListScrolling" scroll-with-animation="true">
     <view class="list">
