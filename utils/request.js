@@ -87,6 +87,13 @@ exports.getFreeCoupon = () => {
     data: {}
   });
 };
+// 获取免费优惠券
+exports.getAuthFreeCoupon = () => {
+  return get({
+    path: "/api/wechat/free_coupon_no_auth",
+    data: {}
+  });
+};
 // 领取优惠券
 exports.receiveCouponList = () => {
   return get({

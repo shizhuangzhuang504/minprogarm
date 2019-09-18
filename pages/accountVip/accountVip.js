@@ -11,6 +11,12 @@ Page({
   onLoad: function() {
     this.getUser();
     this.getUserInfo();
+    let userPhone = wx.getStorageSync("userPhone");
+    if (userPhone) {
+      this.setData({
+        mobile: userPhone
+      });
+    }
   },
   getUser: function() {
     request.getUserInfo().then(res => {

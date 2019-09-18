@@ -44,21 +44,26 @@ Page({
     });
   },
   onShow: function() {
+    let isResiter = app.globalData.isResiter;
     let userInfo = wx.getStorageSync("userInfo");
     this.setData({
+      isResiter,
       userInfo
     });
     this.getLoacalAddress();
-    if (userInfo.Authorization) {
+    request.getAuthFreeCoupon().then(res => {
+      if (res.data.variety_name) {
+        app.globalData.isResiter = true;
+        // this.setData({
+        //   freeConponList: [res.data],
+        //   showFreeCoupon: true
+        // });
+      } else {
+        app.globalData.isResiter = false;
+      }
+    });
+    if (userInfo.Authorization || isResiter) {
       wx.showTabBar({})
-      request.getFreeCoupon().then(res => {
-        if (res.data.variety_name) {
-          this.setData({
-            freeConponList: [res.data],
-            showFreeCoupon: true
-          });
-        }
-      });
     } else {
       wx.hideTabBar({})
     }
@@ -143,35 +148,6 @@ Page({
           wx.setStorageSync("shop", res);
       });
   },
-  // getShop: function () {
-  //   api.getStorage({
-  //     key: 'shop'
-  //   })
-  //   .then(res => {
-  //     if (res.data) {
-  //       this.setData({
-  //         shopName: res.data.rname,
-  //         shopDistance: res.data.distance,
-  //         isOutRange: res.data.service
-  //       });
-  //     }
-  //   });
-  // },
-  getphonenumber: function(e) {
-    let { iv, encryptedData } = e.detail;
-    request
-      .getMobile({
-        iv,
-        encryptData: encryptedData,
-        session_key: wx.getStorageSync("session_key"),
-        type: 0
-      })
-      .then(res => {
-        if (res) {
-          this.getCoupon();
-        }
-      });
-  },
   order: function() {
     if (wx.getStorageSync("isOutRange")) {
       api.switchTab({
@@ -202,6 +178,13 @@ Page({
         });
       }
     });
+  },
+  toLogin: function() {
+    wx.showTabBar({})
+    app.globalData.isResiter = true;
+    api.navigateTo({
+      url: '/pages/login/login'
+    })
   },
   onShareAppMessage: function(opt) {
     if (opt.from === "button") {
